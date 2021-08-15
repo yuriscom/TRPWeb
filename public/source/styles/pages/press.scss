@@ -1,0 +1,36 @@
+@import 'mixins';
+@import 'pages/content';
+
+.press-section {
+  font-family: $light-font-family;
+  font-size: rem-calc(18);
+  p {
+    font-family: $light-font-family;
+    font-size: rem-calc(18);
+  }
+}
+
+.article {
+  padding: $large-size 0;
+  border-top: 1px solid $silver;
+
+  & > div {
+    height: rem-calc(87);
+    @include display-flex;
+    align-items: center;
+  }
+
+  .article-thumb {
+    a {
+      margin: 0 auto;
+    }
+    img {
+      max-width: 100%;
+      width: rem-calc(180);
+      height: rem-calc(55);
+    }
+  }
+  .article-title {
+    font-size: $largest-font-size;
+  }
+}

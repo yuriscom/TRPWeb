@@ -1,0 +1,1698 @@
+<!DOCTYPE html lang="en">
+<!-- NOTE: make changes to index.volt in public folder, instead of the view folder -->
+<!--[if lt IE 9]>      <html class="no-js lt-ie9" data-build="1422638693" data-url="http://app-beta.theredpin.com:3000/latest/"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" data-build="1422638693" data-url="http://app-beta.theredpin.com:3000/latest/"> <!--<![endif]-->
+<head>
+	<title>TheRedPin</title>
+
+	<!-- meta tags -->
+	<!-- general meta tags & responsive content -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<!-- description & keywords -->
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<!-- author & copyright -->
+	<meta name="copyright" content="TheRedPin">
+	<meta name="author" content="https://plus.google.com/115096224517517263725?rel=author">
+
+	<!-- robots -->
+	<meta name="robots" content="noindex, nofollow, noydir, noodp">
+	<meta name="googlebot" content="noodp" />
+
+	<!-- favicon & icons -->
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+	<!-- styles -->
+	<link rel="stylesheet" href="/assets/styles/main.css?1422638693">
+
+	<!--[if lt IE 10]>
+		<link rel="stylesheet" href="/assets/styles/fix/ie.css?1422638693">
+	<![endif]-->
+
+	<!-- high priority scripts -->
+	<script src="/assets/scripts/vendor/modernizr.js?1422638693"></script>
+
+</head>
+<body>
+	<!--[if lt IE 9]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<!-- header -->
+	<header id="header">
+	<nav class="top-bar" data-topbar role="navigation">
+
+		<!-- off-canvas toggle button -->
+		<section class="tab-bar left">
+			<a id="left-off-canvas-toggle" class="left left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+		</section>
+
+		<!-- main top bar section -->
+		<section class="top-bar-section">
+
+			<!-- left navigation items -->
+			<div class="left">
+				<!-- TheRedPin logo -->
+					<a class="left" href="/">
+						<img id="theredpin-logo-full" src="/assets/graphics/theredpin_beta_full_small.png" role="logo" title="TheRedPin" alt="TheRedPin">
+						<img id="theredpin-logo-mini" src="/assets/graphics/theredpin_beta_mini_small.png" role="logo" title="TheRedPin" alt="TheRedPin">
+					</a>
+				<ul class="left hide-for-medium-down">
+										<li class="has-form">
+											<a href="/properties">
+							<button id="resale-button"><span>Resale</span></button>
+						</a>
+					</li>
+
+					<li class="has-form">
+						<a href="/projects">
+							<button id="presale-button"><span>Preconstruction</span></button>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<!-- right navigation items -->
+			<ul class="right">
+				<!-- temp link to TRP1-->
+				<li id="back-trp1">
+					<a href="http://www.theredpin.com/mls-listings-and-new-pre-construction-listings"><button>To current site</button></a>
+				</li>
+				<!-- search -->
+				<li id="search" class="has-form">
+					<button id="search-button" data-reveal-template="search-modal-template" data-reveal-id="search-modal" data-reveal-classes="search small no-padding"><i class="icon icon-search icon-2x"></i><span class="visible-for-large-up">Search</span></button>
+				</li>
+				<!-- search -->
+				<li id="chat-element" class="has-form">
+					<button id="chat-button" class="chat">
+						<i class="icon icon-comments-o icon-2x"></i>
+						<span class="visible-for-large-up">Chat</span>
+					</button>
+				</li>
+
+				<!-- auth buttons, log in & sign up -->
+				<li id="account-buttons" class="has-form hide-for-logged-in">
+					<a id="right-off-canvas-toggle" class="left right-off-canvas-toggle menu-icon" href="#"><i class="icon icon-cog icon-2x"></i><span class="visible-for-large-up">My Account</span></a>
+				</li>
+
+			</ul>
+
+		</section>
+
+	</nav>
+</header>
+
+<script id="search-modal-template" type="text/html">
+	<div data-search>
+
+		<dl id="layer-tab" class="tabs" data-tab>
+			<dd class="active"><a href="#search-properties" data-layer="properties">Resale Homes</a></dd>
+			<dd><a href="#search-projects" data-layer="projects">Pre-Construction Homes</a></dd>
+		</dl>
+
+		<div class="tabs-content no-margin">
+
+			<!-- properties -->
+			<div class="content active" id="search-properties">
+				<form data-abide>
+
+					<div class="row">
+						<div class="small-12 columns">
+							<label>Keywords
+								<input type="text" class="input" name="keywords" placeholder="City, neighbourhood, address or MLS#">
+							</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-12 columns">
+							<label>Property types <small>(select one or more)</small>
+								<input type="text" name="type" placeholder="Property types">
+							</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-12 columns relative">
+							<label>Price range</label>
+							<div class="row collapse">
+								<div class="small-6 columns large-right-padding">
+									<input type="number" name="min_price" placeholder="$ Min">
+								</div>
+								<div class="small-6 columns large-left-padding">
+									<input type="number" name="max_price" placeholder="$ Max">
+								</div>
+								<span class="center large">TO</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-12 columns">
+							<div class="row collapse">
+								<div class="small-6 columns large-right-padding">
+									<label>Beds
+										<select name="beds" class="select">
+											<option value="all">Any</option>
+											<option value="0">Studio</option>
+											<option value="1-plus">1+</option>
+											<option value="2-plus">2+</option>
+											<option value="3-plus">3+</option>
+										</select>
+									</label>
+								</div>
+								<div class="small-6 columns large-left-padding">
+									<label>Baths
+										<select name="baths" class="select">
+											<option value="all">Any</option>
+											<option value="1-plus">1+</option>
+											<option value="2-plus">2+</option>
+											<option value="3-plus">3+</option>
+										</select>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-12 columns">
+							<a class="button radius small-12 submit">Set filters</a>
+						</div>
+					</div>
+
+				</form>
+			</div>
+
+
+			<!-- projects -->
+			<div class="content" id="search-projects">
+				<form data-abide>
+
+					<div class="row">
+						<div class="small-12 columns">
+							<label>Keywords
+								<input type="text" class="input" name="keywords" placeholder="City, neighbourhood, address, builder or project name">
+							</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-12 columns relative">
+							<label>Occupancy</label>
+							<div class="row collapse">
+								<div class="small-6 columns end">
+									<select name="occupancy">
+																			<option value="2015">2015</option>
+																			<option value="2016">2016</option>
+																			<option value="2017">2017</option>
+																			<option value="2018">2018</option>
+																			<option value="2019">2019</option>
+																			<option value="2020">2020</option>
+																		</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-12 columns relative">
+							<label>Price range</label>
+							<div class="row collapse">
+								<div class="small-6 columns large-right-padding">
+									<input type="number" name="min_price" placeholder="$ Min">
+								</div>
+								<div class="small-6 columns large-left-padding">
+									<input type="number" name="max_price" placeholder="$ Max">
+								</div>
+								<span class="center large">TO</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-12 columns">
+							<div class="row collapse">
+								<div class="small-6 columns large-right-padding">
+									<label>Beds
+										<select name="beds" class="select">
+											<option value="all">Any</option>
+											<option value="0">Studio</option>
+											<option value="1-plus">1+</option>
+											<option value="2-plus">2+</option>
+											<option value="3-plus">3+</option>
+										</select>
+									</label>
+								</div>
+								<div class="small-6 columns large-left-padding">
+									<label>Baths
+										<select name="baths" class="select">
+											<option value="all">Any</option>
+											<option value="1-plus">1+</option>
+											<option value="2-plus">2+</option>
+											<option value="3-plus">3+</option>
+										</select>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-2 columns">
+							<div class="switch round">
+								<input name="is_exact" id="show-all-projects-switch" type="checkbox" checked>
+								<label for="show-all-projects-switch"></label>
+							</div>
+						</div>
+						<div class="small-10 columns">
+							<label>Show VIP <span class="icon icon-star yellow"></span> &amp; Incomplete Projects</label>
+							<small>
+							Show all projects on the map with exclusive access as well as other projects with incomplete information.
+							</small>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-2 columns no-line-break">
+							<label>Amenities</label>
+							<input name="amenities" value="pool" id="amenities-pool" type="checkbox"><label for="amenities-pool">Pool</label>
+							<input name="amenities" value="concierge" id="amenities-concierge" type="checkbox"><label for="amenities-concierge">Concierge</label>
+							<input name="amenities" value="gym" id="amenities-gym" type="checkbox"><label for="amenities-gym">Gym</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="small-12 columns">
+							<a class="button radius small-12 submit">Set filters</a>
+						</div>
+					</div>
+
+				</form>
+			</div>
+
+
+		</div>
+	</div>
+</script>
+
+	<div id="content-wrapper" class="off-canvas-wrap" data-offcanvas>
+		<div class="inner-wrap">
+
+			<!-- content -->
+			<section id="content">
+
+				<section>
+					<div class="content row">
+						<div class="columns">
+							<h1>Headers</h1>
+							<h1>Header 1</h1>
+							<h2>Header 2</h2>
+							<h3>Header 3</h3>
+							<h4>Header 4</h4>
+							<h5>Header 5</h5>
+							<h6>Header 6</h6>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="content row">
+						<div class="columns">
+							<h1>Subheaders</h1>
+							<h1 class="subheader">Sub header 1</h1>
+							<h2 class="subheader">Sub header 2</h2>
+							<h3 class="subheader">Sub header 3</h3>
+							<h4 class="subheader">Sub header 4</h4>
+							<h5 class="subheader">Sub header 5</h5>
+							<h6 class="subheader">Sub header 6</h6>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="content row">
+						<div class="columns">
+							<h1>Paragraphs</h1>
+							<p>A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="content row">
+						<div class="columns">
+							<h1>Blockquotes</h1>
+							<blockquote>
+									<p>A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text.</p>
+									<p>It is typically distinguished visually using indentation and a different typeface or smaller size quotation. It may or may not include a citation, usually placed at the bottom.</p>
+									<cite><a href="#">Said no one, ever.</a></cite>
+							</blockquote>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="content row">
+						<div class="columns">
+							<h1>Lists</h1>
+							<div>
+								<h3>Definition list</h3>
+								<dl>
+									<dt>Definition List Title</dt>
+									<dd>This is a definition list division.</dd>
+								</dl>
+
+								<h3>Ordered List</h3>
+								<ol>
+									<li>List Item 1</li>
+									<li>List Item 2</li>
+									<li>List Item 3</li>
+								</ol>
+
+								<h3>Unordered List</h3>
+								<ul>
+									<li>List Item 1</li>
+									<li>List Item 2</li>
+									<li>List Item 3</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="content">
+						<div class="row">
+							<div class="columns">
+								<h1>Horizontal Dividers</h1>
+								<hr>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="columns">
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="content row">
+							<div class="columns">
+								<h1>Tabular Data</h1>
+
+								<table>
+										<caption>Table Caption</caption>
+										<thead>
+												<tr>
+														<th>Table Heading 1</th>
+														<th>Table Heading 2</th>
+														<th>Table Heading 3</th>
+														<th>Table Heading 4</th>
+														<th>Table Heading 5</th>
+												</tr>
+										</thead>
+
+										<tfoot>
+												<tr>
+														<th>Table Footer 1</th>
+														<th>Table Footer 2</th>
+														<th>Table Footer 3</th>
+														<th>Table Footer 4</th>
+														<th>Table Footer 5</th>
+												</tr>
+										</tfoot>
+
+										<tbody>
+												<tr>
+														<td>Table Cell 1</td>
+														<td>Table Cell 2</td>
+														<td>Table Cell 3</td>
+														<td>Table Cell 4</td>
+														<td>Table Cell 5</td>
+												</tr>
+												<tr>
+														<td>Table Cell 1</td>
+														<td>Table Cell 2</td>
+														<td>Table Cell 3</td>
+														<td>Table Cell 4</td>
+														<td>Table Cell 5</td>
+												</tr>
+												<tr>
+														<td>Table Cell 1</td>
+														<td>Table Cell 2</td>
+														<td>Table Cell 3</td>
+														<td>Table Cell 4</td>
+														<td>Table Cell 5</td>
+												</tr>
+												<tr>
+														<td>Table Cell 1</td>
+														<td>Table Cell 2</td>
+														<td>Table Cell 3</td>
+														<td>Table Cell 4</td>
+														<td>Table Cell 5</td>
+												</tr>
+										</tbody>
+								</table>
+
+							</div>
+						</div>
+
+				</section>
+
+				<section>
+					<div class="content row">
+						<div class="columns">
+							<h1>Inline Elements</h1>
+							<div>
+								<p><a href="#">This is a text link</a>.</p>
+								<p><strong>Strong is used to indicate strong importance.</strong></p>
+								<p><em>This text has added emphasis.</em></p>
+								<p>The <b>b element</b> is stylistically different text from normal text, without any special importance.</p>
+								<p>The <i>i element</i> is text that is offset from the normal text.</p>
+								<p>The <u>u element</u> is text with an unarticulated, though explicitly rendered, non-textual annotation.</p>
+								<p><del>This text is deleted</del> and <ins>This text is inserted</ins>.</p>
+								<p><s>This text has a strikethrough</s>.</p>
+								<p>Superscript<sup>®</sup>.</p>
+								<p>Subscript for things like H<sub>2</sub>O.</p>
+								<p><small>This small text is small for for fine print, etc.</small></p>
+								<p>Abbreviation: <abbr title="HyperText Markup Language">HTML</abbr></p>
+								<p><q cite="https://developer.mozilla.org/en-US/docs/HTML/Element/q">This text is a short inline quotation.</q></p>
+								<p><cite>This is a citation.</cite>
+								</p><p>The <dfn>dfn element</dfn> indicates a definition.</p>
+								<p>The <mark>mark element</mark> indicates a highlight.</p>
+								<p>The <var>variable element</var>, such as <var>x</var> = <var>y</var>.</p>
+								<p>The time element: <time datetime="2013-04-06T12:32+00:00">2 weeks ago</time></p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="content row">
+						<div class="columns">
+							<h1>Buttons</h1>
+							<div class="row">
+								<div class="small-12 medium-4 columns">
+									<a class="button radius large">Large primary button</a>
+								</div>
+								<div class="small-12 medium-4 columns">
+									<a class="button radius medium">Medium primary button</a>
+								</div>
+								<div class="small-12 medium-4 columns">
+									<a class="button radius small">Small primary button</a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12 medium-4 columns">
+									<a class="button red radius large">Large secondary button</a>
+								</div>
+								<div class="small-12 medium-4 columns">
+									<a class="button red radius medium">Medium secondary button</a>
+								</div>
+								<div class="small-12 medium-4 columns">
+									<a class="button red radius small">Small secondary button</a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12 medium-4 columns">
+									<a class="button semi-transparent dark radius large">Large semi-transparent button</a>
+								</div>
+								<div class="small-12 medium-4 columns">
+									<a class="button semi-transparent dark radius medium">Medium semi-transparent button</a>
+								</div>
+								<div class="small-12 medium-4 columns">
+									<a class="button semi-transparent dark radius small">Small semi-transparent button</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+
+
+				<section role="main" class="scroll-container"><div class="content">
+
+					<div class="row">
+						<div class="columns">
+							<h1 id="kitchen-sink">Kitchen Sink</h1>
+							<h3 class="subheader">This page includes every single Foundation element so that we can make sure things work together smoothly.</h3>
+
+<h4 id="joyride">Joyride</h4>
+<div>
+<a class="secondary button" id="start-jr" name="start-jr">Start Joyride</a>
+
+<h5 class="so-awesome" id="numero1">Build Joyride with HTML</h5>
+
+<p class="so-awesome" id="numero2">Stop Number 2 for You!</p><!--stops-->
+
+<ol class="joyride-list" data-joyride="">
+	<li data-class="custom so-awesome" data-id="numero1" data-text="Next">
+		<h4>Stop #1</h4>
+
+		<p>You can control all the details for your tour stop. Any valid HTML will
+		work inside of Joyride.</p>
+	</li>
+
+	<li data-button="Next" data-id="numero2">
+		<h4>Stop #2</h4>
+
+		<p>Get the details right by styling Joyride with a custom stylesheet!</p>
+	</li>
+
+	<li data-button="Next">
+		<h4>Stop #3</h4>
+
+		<p>It works as a modal too!</p>
+	</li>
+</ol>
+</div>
+
+
+
+<hr>
+<h4 id="alert-boxes">Alert Boxes</h4>
+<div data-alert class="alert-box radius">
+	This is a standard alert (div.alert-box.radius).
+	<a href="" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box success">
+	This is a success alert (div.alert-box.success).
+	<a href="" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box alert round">
+	This is an alert (div.alert-box.alert.round).
+	<a href="" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box secondary">
+	This is a secondary alert (div.alert-box.secondary).
+	<a href="" class="close">&times;</a>
+</div>
+
+
+<hr>
+<h4 id="block-grid">Block Grid</h4>
+<ul class="small-block-grid-2 large-block-grid-4">
+	<li><img class="th" src="../assets/img/examples/comet-th.jpg"></li>
+	<li><img class="th" src="../assets/img/examples/launch-th.jpg"></li>
+	<li><img class="th" src="../assets/img/examples/space-th.jpg"></li>
+	<li><img class="th" src="../assets/img/examples/spacewalk-th.jpg"></li>
+</ul>
+
+<hr>
+<h4 id="breadcrumbs">Breadcrumbs</h4>
+<ul class="breadcrumbs">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Features</a></li>
+	<li class="unavailable"><a href="#">Gene Splicing</a></li>
+	<li class="current"><a href="#">Cloning</a></li>
+</ul>
+
+<hr>
+<h4 id="buttons">Buttons</h4>
+<div class="row">
+	<div class="small-6 large-6 columns">
+		<a href="#" class="tiny button">.tiny.button</a><br>
+		<a href="#" class="small button">.small.button</a><br>
+		<a href="#" class="button">.button</a><br>
+		<a href="#" class="button expand">.expand</a><br>
+	</div>
+	<div class="small-6 large-6 columns">
+		<a href="#" class="tiny button secondary">.tiny.secondary</a><br>
+		<a href="#" class="small button success radius">.small.success.radius</a><br>
+		<a href="#" class="button alert round disabled">.round.disabled</a><br>
+
+	</div>
+</div>
+
+<hr>
+<h4 id="button-groups">Button Groups</h4>
+<ul class="button-group">
+	<li><a href="#" class="small button">Button 1</a></li>
+	<li><a href="#" class="small button">Button 2</a></li>
+	<li><a href="#" class="small button">Button 3</a></li>
+</ul>
+<ul class="button-group radius">
+	<li><a href="#" class="button secondary">Button 1</a></li>
+	<li><a href="#" class="button secondary">Button 2</a></li>
+	<li><a href="#" class="button secondary">Button 3</a></li>
+	<li><a href="#" class="button secondary">Button 4</a></li>
+</ul>
+<ul class="button-group round even-3">
+	<li><a href="#" class="button alert">Button 1</a></li>
+	<li><a href="#" class="button alert">Button 2</a></li>
+	<li><a href="#" class="button alert">Button 3</a></li>
+</ul>
+<ul class="button-group round even-3">
+	<li><input type="submit" class="button success" value="Button 1"></li>
+	<li><input type="submit" class="button success" value="Button 2"></li>
+	<li><input type="submit" class="button success" value="Button 3"></li>
+</ul>
+
+<hr>
+<h4 id="dropdown-buttons">Dropdown Buttons</h4>
+<ul id="drop" class="f-dropdown" data-dropdown-content>
+	<li><a href="#">This is a link</a></li>
+	<li><a href="#">This is another</a></li>
+	<li><a href="#">Yet another link</a></li>
+</ul>
+
+<p><a href="#" data-dropdown="drop" class="tiny button dropdown">Tiny Dropdown Button</a><br>
+<a href="#" data-dropdown="drop" class="small secondary radius button dropdown">Small Secondary Radius Dropdown Button</a><br>
+<a href="#" data-dropdown="drop" class="button alert round dropdown">Button Alert Round Dropdown Button</a><br>
+<a href="#" data-dropdown="drop" class="large success button dropdown">Large Success Dropdown Button</a><br>
+<a href="#" data-dropdown="drop" class="large button dropdown expand">Large Expanded Dropdown Button</a></p>
+<hr>
+<h4 id="split-buttons">Split Buttons</h4>
+<p> <a href="#" class="tiny button split">Tiny Split Button <span data-dropdown="drop"></span></a><br>
+ <a href="#" class="small secondary radius button split">Small Secondary Radius Split Button <span data-dropdown="drop"></span></a><br>
+ <a href="#" class="button alert round split">Round Alert Split Button <span data-dropdown="drop"></span></a><br>
+ <a href="#" class="large success button split">Large Success Split Button <span data-dropdown="drop"></span></a></p>
+<hr>
+<h4 id="switches">Switches</h4>
+<div class="small-2 switch tiny">
+	 <input id="a" name="switch-a" type="radio" checked>
+	 <label for="a" onclick="">Off</label>
+
+	 <input id="a1" name="switch-a" type="radio">
+	 <label for="a1" onclick="">On</label>
+
+	 <span></span>
+ </div>
+
+ <div class="small-3 switch small">
+	 <input id="b" name="switch-b" type="radio" checked>
+	 <label for="b" onclick="">Off</label>
+
+	 <input id="b1" name="switch-b" type="radio">
+	 <label for="b1" onclick="">On</label>
+
+	 <span></span>
+ </div>
+
+ <div class="small-4 switch radius">
+	 <input id="c" name="switch-c" type="radio" checked>
+	 <label for="c" onclick="">Off</label>
+
+	 <input id="c1" name="switch-c" type="radio">
+	 <label for="c1" onclick="">On</label>
+
+	 <span></span>
+ </div>
+
+ <div class="small-6 switch large round">
+	 <input id="d" name="switch-d" type="radio" checked>
+	 <label for="d" onclick="">Off</label>
+
+	 <input id="d1" name="switch-d" type="radio">
+	 <label for="d1" onclick="">On</label>
+
+	 <span></span>
+ </div>
+
+
+<hr>
+<h4 id="clearing">Clearing</h4>
+<div>
+	<ul class="clearing-thumbs" data-clearing>
+		<li><a class="th" href="../assets/img/examples/comet.jpg"><img data-caption="Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum." src="../assets/img/examples/comet-th-sm.jpg"></a></li>
+
+		<li><a class="th" href="../assets/img/examples/earth.jpg"><img src="../assets/img/examples/earth-th-sm.jpg"></a></li>
+
+		<li><a class="th" href="../assets/img/examples/launch.jpg"><img data-caption="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus." src="../assets/img/examples/launch-th-sm.jpg"></a></li>
+
+		<li><a class="th" href="../assets/img/examples/satelite.jpg"><img src="../assets/img/examples/satelite-th-sm.jpg"></a></li>
+
+		<li><a class="th" href="../assets/img/examples/space.jpg"><img data-caption="Integer posuere erat a ante venenatis dapibus posuere velit aliquet." src="../assets/img/examples/space-th-sm.jpg"></a></li>
+	</ul>
+</div>
+
+
+<hr>
+<h4 id="forms">Forms</h4>
+<form>
+	<fieldset>
+		<legend>Fieldset</legend>
+
+		<div class="row">
+			<div class="large-12 columns">
+				<label>Input Label</label>
+				<input type="text" placeholder="large-12.columns">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="large-4 columns">
+				<label>Input Label</label>
+				<input type="text" placeholder="large-4.columns">
+			</div>
+			<div class="large-4 columns">
+				<label>Input Label</label>
+				<input type="text" placeholder="large-4.columns">
+			</div>
+			<div class="large-4 columns">
+				<div class="row collapse">
+					<label>Input Label</label>
+					<div class="small-9 columns">
+						<input type="text" placeholder="small-9.columns">
+					</div>
+					<div class="small-3 columns">
+						<span class="postfix">.com</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="large-12 columns">
+				<label>Textarea Label</label>
+				<textarea placeholder="small-12.columns"></textarea>
+			</div>
+		</div>
+
+	</fieldset>
+</form>
+
+<hr>
+<h4 id="dropdowns">Dropdowns</h4>
+<p><a class="button" data-dropdown="tinyDrop" href="#">Link Dropdown &raquo;</a>
+	<a class="button" data-dropdown="contentDrop" href="#">Content Dropdown &raquo;</a>
+	<!-- Dropdowns --></p>
+	<ul class="f-dropdown" data-dropdown-content="" id="tinyDrop">
+		<li><a href="#">This is a link</a></li>
+
+		<li><a href="#">This is another</a></li>
+
+		<li><a href="#">Yet another</a></li>
+	</ul>
+
+	<div class="f-dropdown content medium" data-dropdown-content="" id=
+	"contentDrop">
+		<h4>Title</h4>
+
+		<p>Some text that people will think is awesome! Some text that people will
+		think is awesome! Some text that people will think is awesome!</p><img src=
+		"../assets/img/examples/launch.jpg">
+
+		<p>Launching a Discovery Mission</p><a class="button" href="#">Button</a>
+	</div>
+
+
+<hr>
+<h4 id="flex-video">Flex Video</h4>
+<div class="flex-video">
+	<iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<hr>
+<h4 id="inline-lists">Inline Lists</h4>
+<ul class="inline-list">
+	<li><a href="#">Link 1</a></li>
+	<li><a href="#">Link 2</a></li>
+	<li><a href="#">Link 3</a></li>
+	<li><a href="#">Link 4</a></li>
+	<li><a href="#">Link 5</a></li>
+</ul>
+
+<hr>
+<h4 id="keystroke">Keystroke</h4>
+<p>To make something pretty, press and hold <kbd>cmd + alt + shift + w + a + !</kbd></p>
+<hr>
+<h4 id="labels">Labels</h4>
+<p>
+	<span class="label">Regular Label</span><br>
+	<span class="radius secondary label">Radius Secondary Label</span><br>
+	<span class="round alert label">Round Alert Label</span><br>
+	<span class="success label">Success Label</span><br>
+</p>
+
+<hr>
+<h4 id="magellan">Magellan</h4>
+<div class="magellan-container" data-magellan-expedition="fixed">
+	<dl class="sub-nav">
+		<dd data-magellan-arrival="build"><a href="#build">Build with HTML</a></dd>
+		<dd data-magellan-arrival="js"><a href="#js">Using Javascript</a></dd>
+	</dl>
+</div>
+
+<p><a name="build"></a></p>
+<p><h5 data-magellan-destination="build">Build With Predefined HTML Structure</h5></p>
+<p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vestibulum id ligula porta felis euismod semper.</p>
+
+<p><a name="js"></a></p>
+<p><h5 data-magellan-destination="js">Awesome JS Goodness</h5></p>
+<p>Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vestibulum id ligula porta felis euismod semper.</p>
+
+<hr>
+<h4 id="orbit">Orbit</h4>
+<div class="row">
+	<div class="large-12 columns">
+		<ul id="featured1" data-orbit data-options="timer_speed:5000;">
+			<li>
+				<img src="http://foundation.zurb.com/docs/assets/img/examples/satelite-orbit.jpg" />
+				<div class="orbit-caption">
+					Caption One. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+				</div>
+			</li>
+			<li>
+				<img src="http://foundation.zurb.com/docs/assets/img/examples/andromeda-orbit.jpg" />
+				<div class="orbit-caption">
+					Caption Two. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+				</div>
+			</li>
+			<li>
+				<img src="http://foundation.zurb.com/docs/assets/img/examples/launch-orbit.jpg" />
+				<div class="orbit-caption">
+					Caption Three. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<hr>
+<h4 id="pagination">Pagination</h4>
+<ul class="pagination">
+	<li class="arrow unavailable"><a href="">&laquo;</a></li>
+	<li class="current"><a href="">1</a></li>
+	<li><a href="">2</a></li>
+	<li><a href="">3</a></li>
+	<li><a href="">4</a></li>
+	<li class="unavailable"><a href="">&hellip;</a></li>
+	<li><a href="">12</a></li>
+	<li><a href="">13</a></li>
+	<li class="arrow"><a href="">&raquo;</a></li>
+</ul>
+
+<hr>
+<h4 id="panels">Panels</h4>
+<div class="row">
+	<div class="large-6 columns">
+		<div class="panel">
+			<h5>This is a regular panel.</h5>
+			<p>It has an easy to override visual style, and is appropriately subdued.</p>
+		</div>
+	</div>
+	<div class="large-6 columns">
+		<div class="panel callout radius">
+			<h5>This is a radius callout panel.</h5>
+			<p>It&#39;s a little ostentatious, but useful for important content.</p>
+		</div>
+	</div>
+
+<p></div></p>
+<h4 id="pricing-tables">Pricing Tables</h4>
+<div class="row">
+	<div class="large-4 columns">
+		<ul class="pricing-table">
+			<li class="title">Standard</li>
+			<li class="price">$99.99</li>
+			<li class="description">An awesome description</li>
+			<li class="bullet-item">1 Database</li>
+			<li class="bullet-item">5GB Storage</li>
+			<li class="bullet-item">20 Users</li>
+			<li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+		</ul>
+	</div>
+</div>
+
+<hr>
+<h4 id="progress-bars">Progress Bars</h4>
+<div class="progress large-6"><span class="meter" style="width: 40%"></span></div>
+<div class="radius progress success large-8"><span class="meter" style="width: 80%"></span></div>
+<div class="nice round progress alert large-10"><span class="meter" style="width: 30%"></span></div>
+<div class="nice secondary progress"><span class="meter" style="width: 50%"></span></div>
+
+<hr>
+<h4 id="reveal">Reveal</h4>
+<p><a href="#" data-reveal-id="firstModal" class="radius button">Example Modal&hellip;</a>
+<a href="#" data-reveal-id="videoModal" class="radius button">Example Video Modal&hellip;</a></p>
+<!-- Reveal Modals begin -->
+<div id="firstModal" class="reveal-modal" data-reveal>
+	<h2>This is a modal.</h2>
+	<p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
+	<p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
+	<p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal&hellip;</a></p>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="secondModal" class="reveal-modal" data-reveal>
+	<h2>This is a second modal.</h2>
+	<p>See? It just slides into place after the first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="videoModal" class="reveal-modal large" data-reveal>
+	<h2>This modal has video</h2>
+	<div class="flex-video">
+					<iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+	</div>
+
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+<!-- Reveal Modals end -->
+
+<hr>
+<h4 id="sliders">Sliders</h4>
+<div class="range-slider" data-slider>
+		<span class="range-slider-handle"></span>
+		<span class="range-slider-active-segment"></span>
+		<input type="hidden">
+</div>
+<div class="range-slider radius" data-slider>
+		<span class="range-slider-handle"></span>
+		<span class="range-slider-active-segment"></span>
+		<input type="hidden">
+</div>
+<div class="range-slider round" data-slider>
+		<span class="range-slider-handle"></span>
+		<span class="range-slider-active-segment"></span>
+		<input type="hidden">
+</div>
+<div class="range-slider" data-slider data-options="step: 20;">
+		<span class="range-slider-handle"></span>
+		<span class="range-slider-active-segment"></span>
+		<input type="hidden">
+</div>
+
+
+<hr>
+<h4 id="accordion">Accordion</h4>
+<ul class="accordion" data-accordion>
+	<li class="accordion-navigation">
+		<a href="#panel1a">Accordion 1</a>
+		<div id="panel1a" class="content active">
+			<ul class="small-block-grid-2 large-block-grid-3 ">
+				<li><img src="http://placehold.it/350x150"></li>
+				<li><img src="http://placehold.it/350x150"></li>
+				<li><img src="http://placehold.it/350x150"></li>
+			</ul>
+		</div>
+	</li>
+	<li class="accordion-navigation">
+		<a href="#panel2a">Accordion 2</a>
+		<div id="panel2a" class="content">
+			<div class="row">
+				<div class="small-6 columns">
+					<p>Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+			<div class="small-6 columns">
+				<img src="http://placehold.it/350x150">
+			</div>
+		</div>
+	</li>
+	<li class="accordion-navigation">
+		<a href="#panel3a">Accordion 3</a>
+		<div id="panel3a" class="content">
+			Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		</div>
+	</li>
+</ul>
+
+<hr>
+<h4 id="tabs">Tabs</h4>
+<dl class="tabs" data-tab>
+	<dd class="active"><a href="#panel2-1">Tab 1</a></dd>
+	<dd><a href="#panel2-2">Tab 2</a></dd>
+	<dd><a href="#panel2-3">Tab 3</a></dd>
+	<dd><a href="#panel2-4">Tab 4</a></dd>
+</dl>
+<div class="tabs-content">
+	<div class="content active" id="panel2-1">
+		<p>First panel content goes here...</p>
+	</div>
+	<div class="content" id="panel2-2">
+		<p>Second panel content goes here...</p>
+	</div>
+	<div class="content" id="panel2-3">
+		<p>Third panel content goes here...</p>
+	</div>
+	<div class="content" id="panel2-4">
+		<p>Fourth panel content goes here...</p>
+	</div>
+</div>
+
+<dl class="tabs vertical" data-tab="">
+	<dd class="active"><a href="#panel1a">Tab 1</a></dd>
+
+	<dd><a href="#panel2a">Tab 2</a></dd>
+
+	<dd><a href="#panel3a">Tab 3</a></dd>
+
+	<dd><a href="#panel4a">Tab 4</a></dd>
+</dl>
+
+<div class="tabs-content vertical">
+	<div class="content active" id="panel1a">
+		<p>Panel 1 content goes here.</p>
+	</div>
+
+	<div class="content" id="panel2a">
+		<p>Panel 2 content goes here.</p>
+	</div>
+
+	<div class="content" id="panel3a">
+		<p>Panel 3 content goes here.</p>
+	</div>
+
+	<div class="content" id="panel4a">
+		<p>Panel 4 content goes here.</p>
+	</div>
+</div>
+
+
+
+<hr>
+<h4 id="side-nav">Side Nav</h4>
+<div class="row">
+	<div class="large-4 columns end">
+		<ul class="side-nav">
+			<li class="active"><a href="#">Link 1</a></li>
+			<li><a href="#">Link 2</a></li>
+			<li class="divider"></li>
+			<li><a href="#">Link 3</a></li>
+			<li><a href="#">Link 4</a></li>
+		</ul>
+	</div>
+</div>
+
+<hr>
+<h4 id="sub-nav">Sub Nav</h4>
+<dl class="sub-nav">
+	<dt>Filter:</dt>
+	<dd class="active"><a href="#">All</a></dd>
+	<dd><a href="#">Active</a></dd>
+	<dd><a href="#">Pending</a></dd>
+	<dd><a href="#">Suspended</a></dd>
+</dl>
+
+<hr>
+<h4 id="tables">Tables</h4>
+<table>
+	<thead>
+		<tr>
+			<th width="200">Table Header</th>
+			<th>Table Header</th>
+			<th width="150">Table Header</th>
+			<th width="150">Table Header</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Content Goes Here</td>
+			<td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+			<td>Content Goes Here</td>
+			<td>Content Goes Here</td>
+		</tr>
+		<tr>
+			<td>Content Goes Here</td>
+			<td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+			<td>Content Goes Here</td>
+			<td>Content Goes Here</td>
+		</tr>
+		<tr>
+			<td>Content Goes Here</td>
+			<td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+			<td>Content Goes Here</td>
+			<td>Content Goes Here</td>
+		</tr>
+	</tbody>
+</table>
+
+<hr>
+<h4 id="thumbnails">Thumbnails</h4>
+<p><img class="th" src="http://foundation.zurb.com/docs/assets/img/examples/earth-th-sm.jpg"><img class="th" src="http://foundation.zurb.com/docs/assets/img/examples/space-th-sm.jpg"></p>
+<hr>
+<h4 id="tooltips">Tooltips</h4>
+<p>The tooltips can be positioned on the <span data-tooltip class="has-tip" data-width="210" title="I'm on bottom and the default position.">&quot;tip-bottom&quot;</span>, which is the default position, <span data-tooltip class="has-tip tip-top noradius" data-width="210" title="I'm on the top and I'm not rounded!">&quot;tip-top&quot; (hehe)</span>, <span data-tooltip="left" class="has-tip tip-left" data-width="90" title="I'm on the left!">&quot;tip-left&quot;</span>, or <span data-tooltip="right" class="has-tip tip-right" data-width="120" title="I'm on the right!">&quot;tip-right&quot;</span> of the target element by adding the appropriate class to them. You can even add your own custom class to style each tip differently. On a small device, the tooltips are full width and bottom aligned.</p>
+
+<hr>
+<h4 id="top-bar">Top Bar</h4>
+ <nav class="top-bar" data-topbar>
+		<ul class="title-area">
+			<!-- Title Area -->
+			<li class="name">
+				<h1>
+					<a href="#">
+						Top Bar Title
+					</a>
+				</h1>
+			</li>
+			<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+		</ul>
+
+		<section class="top-bar-section">
+			<!-- Right Nav Section -->
+			<ul class="right">
+				<li class="divider"></li>
+				<li class="has-dropdown">
+					<a href="#">Main Item 1</a>
+					<ul class="dropdown">
+						<li><label>Section Name</label></li>
+						<li class="has-dropdown">
+							<a href="#" class="">Has Dropdown, Level 1</a>
+							<ul class="dropdown">
+								<li><a href="#">Dropdown Options</a></li>
+								<li><a href="#">Dropdown Options</a></li>
+								<li><a href="#">Level 2</a></li>
+								<li><a href="#">Subdropdown Option</a></li>
+								<li><a href="#">Subdropdown Option</a></li>
+								<li><a href="#">Subdropdown Option</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Dropdown Option</a></li>
+						<li><a href="#">Dropdown Option</a></li>
+						<li class="divider"></li>
+						<li><label>Section Name</label></li>
+						<li><a href="#">Dropdown Option</a></li>
+						<li><a href="#">Dropdown Option</a></li>
+						<li><a href="#">Dropdown Option</a></li>
+						<li class="divider"></li>
+						<li><a href="#">See all &rarr;</a></li>
+					</ul>
+				</li>
+				<li class="divider"></li>
+				<li class="has-dropdown">
+					<a href="#">Main Item 2</a>
+					<ul class="dropdown">
+						<li><a href="#">Dropdown Option</a></li>
+						<li><a href="#">Dropdown Option</a></li>
+						<li><a href="#">Dropdown Option</a></li>
+						<li class="divider"></li>
+						<li><a href="#">See all &rarr;</a></li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+	</nav>
+
+	<!-- End Top Bar -->
+
+<hr>
+<h4 id="type">Type</h4>
+<div class="type-demo">
+
+<h1>h1. This is a very large header.</h1>
+<h2>h2. This is a large header.</h2>
+<h3>h3. This is a medium header.</h3>
+<h4>h4. This is a moderate header.</h4>
+<h5>h5. This is a small header.</h5>
+<h6>h6. This is a tiny header.</h6>
+
+<br>
+
+<h1 class="subheader">h1. subheader</h1>
+<h2 class="subheader">h2. subheader</h2>
+<h3 class="subheader">h3. subheader</h3>
+<h4 class="subheader">h4. subheader</h4>
+<h5 class="subheader">h5. subheader</h5>
+<h6 class="subheader">h6. subheader</h6>
+
+<hr>
+
+<h3>Definition List</h3>
+<h5>Definition lists are great for small block of copy that describe the header</h5>
+<dl>
+<dt>Lower cost</dt>
+	<dd>The new version of this product costs significantly less than the previous one!</dd>
+<dt>Easier to use</dt>
+	<dd>We&#39;ve changed the product so that it&#39;s much easier to use!</dd>
+<dt>Safe for kids</dt>
+	<dd>You can leave your kids alone in a room with this product and they won&#39;t get hurt (not a guarantee).</dd>
+</dl>
+<hr>
+
+<h5>Un-ordered lists are great for making quick outlines bulleted.</h5>
+<ul class="disc">
+	<li>List item with a much longer description or more content.</li>
+	<li>List item</li>
+	<li>List item
+		<ul>
+			<li>Nested List Item</li>
+			<li>Nested List Item</li>
+			<li>Nested List Item</li>
+		</ul>
+	</li>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+</ul>
+
+<h5>Ordered lists are great for lists that need order, duh.</h5>
+<ol>
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+</ol>
+
+
+
+<br>
+<h5>Blockquote</h5>
+<blockquote>I do not fear computers. I fear the lack of them. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur.<cite>Isaac Asimov</cite></blockquote>
+
+<br>
+<h5>Vcard</h5>
+<ul class="vcard">
+	<li class="fn">Gaius Baltar</li>
+	<li class="street-address">123 Colonial Ave.</li>
+	<li class="locality">Caprica City</li>
+	<li><span class="state">Caprica</span>, <span class="zip">12345</span></li>
+	<li class="email"><a href="#"><span class="__cf_email__" data-cfemail="7c1b521e1d10081d0e3c19041d110c1019521f1311">[email&#160;protected]</span><script cf-hash='f9e31' type="text/javascript">
+/* <![CDATA[ */!function(){try{var t="currentScript"in document?document.currentScript:function(){for(var t=document.getElementsByTagName("script"),e=t.length;e--;)if(t[e].getAttribute("cf-hash"))return t[e]}();if(t&&t.previousSibling){var e,r,n,i,c=t.previousSibling,a=c.getAttribute("data-cfemail");if(a){for(e="",r=parseInt(a.substr(0,2),16),n=2;a.length-n;n+=2)i=parseInt(a.substr(n,2),16)^r,e+=String.fromCharCode(i);e=document.createTextNode(e),c.parentNode.replaceChild(e,c)}}}catch(u){}}();/* ]]> */</script></a></li>
+</ul>
+
+</div>
+
+<hr>
+<h4 id="visibility-classes">Visibility Classes</h4>
+<h5 id="screen-size-visibility-control-show-">Screen Size Visibility Control (Show)</h5>
+<p>The following text should describe the screen size you&#39;re using:</p>
+<div class="row">
+	<div class="large-6 columns">
+	<h4>HTML</h4>
+	<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">&quot;panel&quot;</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-small-only&quot;</span>&gt;</span>This text is shown only on a small screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-medium-up&quot;</span>&gt;</span>This text is shown on medium screens and up.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-medium-only&quot;</span>&gt;</span>This text is shown only on a medium screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-large-up&quot;</span>&gt;</span>This text is shown on large screens and up.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-large-only&quot;</span>&gt;</span>This text is shown only on a large screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-xlarge-up&quot;</span>&gt;</span>This text is shown on xlarge screens and up.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-xlarge-only&quot;</span>&gt;</span>This text is shown only on an xlarge screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-xxlarge-up&quot;</span>&gt;</span>This text is shown on xxlarge screens and up.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div></code></pre>
+
+	</div>
+	<div class="large-6 columns">
+		<h4>Rendered HTML</h4>
+				<p class="panel">
+			<strong class="show-for-small-only">This text is shown only on a small screen.</strong>
+			<strong class="show-for-medium-up">This text is shown on medium screens and up.</strong>
+			<strong class="show-for-medium-only">This text is shown only on a medium screen.</strong>
+			<strong class="show-for-large-up">This text is shown on large screens and up.</strong>
+			<strong class="show-for-large-only">This text is shown only on a large screen.</strong>
+			<strong class="show-for-xlarge-up">This text is shown on xlarge screens and up.</strong>
+			<strong class="show-for-xlarge-only">This text is shown only on an xlarge screen.</strong>
+			<strong class="show-for-xxlarge-up">This text is shown on xxlarge screens and up.</strong>
+		</p>
+	</div>
+</div>
+
+
+
+<h5 id="screen-size-visibility-control-hide-">Screen Size Visibility Control (Hide)</h5>
+<p>The following text should describe the screen size you aren&#39;t using:</p>
+<div class="row">
+	<div class="large-6 columns">
+	<h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">&quot;panel&quot;</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;hide-for-small-only&quot;</span>&gt;</span>You are <span class="tag">&lt;<span class="title">em</span>&gt;</span>not<span class="tag">&lt;/<span class="title">em</span>&gt;</span> on a small screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;hide-for-medium-up&quot;</span>&gt;</span>You are <span class="tag">&lt;<span class="title">em</span>&gt;</span>not<span class="tag">&lt;/<span class="title">em</span>&gt;</span> on a medium, large, xlarge, or xxlarge screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;hide-for-medium-only&quot;</span>&gt;</span>You are <span class="tag">&lt;<span class="title">em</span>&gt;</span>not<span class="tag">&lt;/<span class="title">em</span>&gt;</span> on a medium screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;hide-for-large-up&quot;</span>&gt;</span>You are <span class="tag">&lt;<span class="title">em</span>&gt;</span>not<span class="tag">&lt;/<span class="title">em</span>&gt;</span> on a large, xlarge, or xxlarge screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;hide-for-large-only&quot;</span>&gt;</span>You are <span class="tag">&lt;<span class="title">em</span>&gt;</span>not<span class="tag">&lt;/<span class="title">em</span>&gt;</span> on a large screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;hide-for-xlarge-up&quot;</span>&gt;</span>You are <span class="tag">&lt;<span class="title">em</span>&gt;</span>not<span class="tag">&lt;/<span class="title">em</span>&gt;</span> on an xlarge screen and up.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;hide-for-xlarge-only&quot;</span>&gt;</span>You are <span class="tag">&lt;<span class="title">em</span>&gt;</span>not<span class="tag">&lt;/<span class="title">em</span>&gt;</span> on an xlarge screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;hide-for-xxlarge-up&quot;</span>&gt;</span>You are <span class="tag">&lt;<span class="title">em</span>&gt;</span>not<span class="tag">&lt;/<span class="title">em</span>&gt;</span> on an xxlarge screen.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div></code></pre>
+
+	</div>
+	<div class="large-6 columns">
+	<h4>Rendered HTML</h4>
+				<p class="panel">
+			<strong class="hide-for-small-only">You are <em>not</em> on a small screen.</strong>
+			<strong class="hide-for-medium-up">You are <em>not</em> on a medium, large, xlarge, or xxlarge screen.</strong>
+			<strong class="hide-for-medium-only">You are <em>not</em> on a medium screen.</strong>
+			<strong class="hide-for-large-up">You are <em>not</em> on a large, xlarge, or xxlarge screen.</strong>
+			<strong class="hide-for-large-only">You are <em>not</em> on a large screen.</strong>
+			<strong class="hide-for-xlarge-up">You are <em>not</em> on an xlarge screen and up.</strong>
+			<strong class="hide-for-xlarge-only">You are <em>not</em> on an xlarge screen.</strong>
+			<strong class="hide-for-xxlarge-up">You are <em>not</em> on an xxlarge screen.</strong>
+				</p>
+	</div>
+</div>
+
+
+
+<h5 id="orientation-detection">Orientation Detection</h5>
+<p>The following text should describe the device orientation you&#39;re using:</p>
+<div class="row">
+	<div class="large-6 columns">
+	<h4>HTML</h4>
+	<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">&quot;panel&quot;</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-landscape&quot;</span>&gt;</span>You are in landscape orientation.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-portrait&quot;</span>&gt;</span>You are in portrait orientation.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div></code></pre>
+
+	</div>
+	<div class="large-6 columns">
+	<h4>Rendered HTML</h4>
+				<p class="panel">
+					<strong class="show-for-landscape">You are in landscape orientation.</strong>
+					<strong class="show-for-portrait">You are in portrait orientation.</strong>
+				</p>
+	</div>
+</div>
+
+
+
+<h5 id="touch-detection">Touch Detection</h5>
+<p>The following text should describe if you&#39;re using a touch device:</p>
+<div class="row">
+	<div class="large-6 columns">
+	<h4>HTML</h4>
+	<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">&quot;panel&quot;</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;show-for-touch&quot;</span>&gt;</span>You are on a touch-enabled device.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">strong</span> <span class="attribute">class</span>=<span class="value">&quot;hide-for-touch&quot;</span>&gt;</span>You are not on a touch-enabled device.<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div></code></pre>
+
+	</div>
+	<div class="large-6 columns">
+	<h4>Rendered HTML</h4>
+				<p class="panel">
+					<strong class="show-for-touch">You are on a touch-enabled device.</strong>
+					<strong class="hide-for-touch">You are not on a touch-enabled device.</strong>
+				</p>
+	</div>
+</div>
+
+
+
+
+						</div>
+					</div>
+					<section id="courses-banner-large">
+	<div class="row">
+		<div class="large-5 medium-5 columns banner-image">
+			<img src="http://foundation.zurb.com/assets/img/responsive-banner-main.svg" alt="responsive design">
+		</div>
+		<div class="large-7 medium-7 columns banner-info">
+			<h3>Get a running start with Foundation</h3>
+			<p>Learn the fundamentals of the world's most advanced responsive framework in our <strong>Intro to Foundation class.</strong> You'll learn from the creators themselves on how to use Foundation and jumpstart your next project. <a href="http://zurb.com/university/courses" class="inline-hide">Learn more about classes »</a></p>
+			<a href="http://zurb.com/university/foundation-intro?utm_source=Foundation%20Docs&utm_medium=Large%20Banner&utm_campaign=Intro%20to%20Foundation" class="button">Learn More</a>
+			<a href="http://zurb.com/university/courses" class="learn-more hide-for-medium-up">Learn more about classes »</a>
+		</div>
+	</div>
+</section>
+					<div id="newsletter">
+	<div class="row">
+		<div class="medium-8 columns">
+			<h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+			<p>Register to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+		</div>
+		<div class="medium-4 columns">
+			<form method="post" action="http://zurb.com/responsive/subscribe">
+				<div class="row collapse margintop-20px">
+					<div class="small-8 medium-8 columns">
+						<input type="text" name="email" placeholder="signup@example.com">
+					</div>
+					<div class="small-4 medium-4 columns">
+						<input type="submit" href="#" class="postfix small button expand" value="Sign Up">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+				</div></section>
+
+
+
+
+			</section>
+
+			<!-- left off-canvas menu -->
+<aside class="left-off-canvas-menu" role="complementary">
+	<div class="off-canvas-wrapper">
+		<ul class="off-canvas-list message-box">
+			<li class="list-title"><a href="#">Homes For Sale</a></li>
+			<li><a href="/properties" class="message-link change-position">Resale Homes <span class="icon icon-angle-right icon-2x"></span></a></li>
+			<li><a href="/projects" class="message-link change-position">Preconstruction Projects <span class="icon icon-angle-right icon-2x"></span></a></li>
+			<li class="list-title"><a href="#">At Your Service</a></li>
+			<li><a href="#" class="message-link change-position">For Buyers <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">For Sellers <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Mortgages <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li class="list-title"><a href="#">Location Guides</a></li>
+			<li><a href="#" class="message-link change-position">Our Cities <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Our Neighbourhoods <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li class="list-title"><a href="#">Who we are</a></li>
+			<li><a href="#" class="message-link change-position">About Us <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Contact Us <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Blog <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Press/Media <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Partners <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Newsletter <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Careers <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li class="list-title"><a href="#">Help</a></li>
+			<li><a href="#" class="message-link change-position">FAQ <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Feedback <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Site Map <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li class="list-title"><a href="#">Legal</a></li>
+			<li><a href="#" class="message-link change-position">Privacy Policy <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Terms of Use <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">TREB Terms of Use <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+		</ul>
+	</div>
+</aside>
+
+			<!-- right off-canvas menus -->
+			<!-- left off-canvas menu -->
+<aside class="right-off-canvas-menu" role="complementary">
+	<div class="off-canvas-wrapper">
+		<ul class="off-canvas-list message-box">
+			<li><a href="#" class="message-link change-position">My Subscriptions <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">New Listings Alerts <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Change Password <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			<li><a href="#" class="message-link change-position">Log out <span class="icon icon-angle-right icon-2x"></span><span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+		</ul>
+	</div>
+</aside>
+
+			<!-- for easily closing the off-canvas menus -->
+			<a class="exit-off-canvas"></a>
+
+			<!-- footer padding -->
+			<div id="footer-pusher"></div>
+			<!-- footer -->
+			<footer id="footer">
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="theredpin-logo-container">
+				<img id="theredpin-logo" src="/assets/graphics/theredpin_logo_grey_small.png" role="logo" title="TheRedPin" alt="TheRedPin">
+			</div>
+			<div class="address">TheRedPin, Real Estate Brokerage | 5 Church St. Toronto ON M5E 1M2 | <a href="tel:416-800-0812">(416) 800 0812</a></div>
+		<hr>
+			<div class="social-buttons">
+				<a class="social" target="_blank" href="http://facebook.com/TheRedPin"><i class="icon icon-facebook-square icon-2x"></i></a>
+				<a class="social" target="_blank" href="http://twitter.com/TheRedPin"><i class="icon icon-twitter-square icon-2x"></i></a>
+				<a class="social" target="_blank" href="http://www.pinterest.com/TheRedPin"><i class="icon icon-pinterest-square icon-2x"></i></a>
+				<a class="social" target="_blank" href="https://www.linkedin.com/company/1147008"><i class="icon icon-linkedin-square icon-2x"></i></a>
+				<a class="social" target="_blank" href="http://plus.google.com/+TheredpinBrokerage"><i class="icon icon-google-plus-square icon-2x"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="row links-container">
+		<div class="medium-3 columns">
+			<div class="text-highlight">Who we are</div>
+			<ul class="message-box no-margin">
+				<li><a href="" class="message-link change-position">About Us <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Contact Us <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Press/Media <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">FAQ <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Partners <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Newsletter <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Careers <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Blog <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			</ul>
+		</div>
+		<div class="medium-3 columns">
+			<div class="text-highlight">What we do</div>
+			<ul class="message-box no-margin">
+				<li><a href="" class="message-link change-position">Buying a Home <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Selling your home <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Mortgages <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">VIP and Preconstruction <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Our Agents <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			</ul>
+		</div>
+		<div class="medium-3 columns">
+			<div class="text-highlight">Provinces</div>
+			<ul class="message-box no-margin">
+				<li><a href="" class="message-link change-position">Ontario <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">British Columbia <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li class="text-highlight">Cities</li>
+				<li><a href="" class="message-link change-position">Toronto <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Vancouver <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			</ul>
+		</div>
+		<div class="medium-3 columns">
+			<div class="text-highlight">Listings near you</div>
+			<ul class="message-box no-margin">
+				<li><a href="" class="message-link change-position">Homes <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Townhomes <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Condos <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+				<li><a href="" class="message-link change-position">Pre-Construction <span class="message"><span>Coming soon!</span> <br />This is still under development.</span></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row visible-for-medium-up">
+		<div class="columns">
+			<hr>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="medium-4 columns tooltip" message="Coming soon! This is still under development.">TheRedPin, Inc. - Copyright 2014</div>
+		<div class="medium-4 columns tooltip" message="Coming soon! This is still under development.">Privacy Policy Terms of Use</div>
+	</div>
+</footer>
+		</div>
+	</div>
+
+	<!-- templates -->
+	<script id="iframe-template" type="text/html">
+	<iframe name="{{ name }}" width="{{ width }}" height="{{ height }}" frameborder="0" src="{{ source }}"></iframe>
+</script>
+
+<script id="reveal-template" type="text/html">
+	<div data-reveal class="reveal-modal {{ classes }}" id="{{ id }}">{{ contents }}
+		<a class="close-reveal-modal">&times;</a>
+	</div>
+</script>
+
+<script id="alert-template" type="text/html">
+	<div data-alert class="alert-box radius {{ classes }}">{{ message }}<a class="close">&times;</a></div>
+</script>
+
+<script id="spinner-template" type="text/html">
+	<div class="spinner {{ classes }}"></div>
+</script>
+
+<script id="icon-template" type="text/html">
+	<span class="icon {{ classes }}"></span>
+</script>
+
+<script id="select-template" type="text/html">
+	<select id="{{ id }}" name="{{ name }}">{{ contents }}</select>
+</script>
+
+<script id="option-template" type="text/html">
+	<option value="{{ value }}">{{ contents }}</option>
+</script>
+
+<script id="selectize-item-template" type="text/html">
+	<div class="item {{ classes }}">{( if (graphics) { )}<span class="{{ graphics }}"></span> {( } )}{{ contents }}</div>
+</script>
+
+<script id="selectize-properties-quick-link-template" type="text/html">
+	<div class="item quick-link">
+		<div>{{ label }}</div>
+		<small>#{{ mls }}</small>
+		<span class="icon icon-angle-right"></span>
+	</div>
+</script>
+
+<script id="selectize-projects-quick-link-template" type="text/html">
+	<div class="item quick-link">
+		<div>{{ label }}</div>
+		<small>{{ address }}</small>
+		<span class="icon icon-angle-right"></span>
+	</div>
+</script>
+
+<script id="selectize-group-header-template" type="text/html">
+	<div class="optgroup-header {{ classes }}">{( if (graphics) { )}<span class="{{ graphics }}"></span> {( } )}{{ contents }}</div>
+</script>
+
+<script id="photos-unavailable-template" type="text/html">
+	<div class="unavailable {{ classes }}"><span class="icon large icon-photo"></span><br/> No image available</div>
+</script>
+
+<script id="photos-error-template" type="text/html">
+	<div class="unavailable {{ classes }}"><span class="icon large icon-exclamation-triangle"></span><br/> Could not load image</div>
+</script>
+
+	<!-- external scripts & APIs -->
+	<script src="https://www.google.com/jsapi"></script>
+
+	<!-- low priority scripts -->
+	<script src="/assets/scripts/vendor/vendor.js?1422638693" data-main="main"></script>
+						<script src="/assets/scripts/pages/home.js?1422638693"></script>
+
+	<!--[if lt IE 10]>
+		<script src="/assets/scripts/fix/ie.js?1422638693"></script>
+	<![endif]-->
+
+	<!-- analytics tools -->
+	<script type="text/javascript">
+
+// Google analytics
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-15026201-3', 'auto');
+ga('send', 'pageview');
+
+
+// Marketo analytics, requires jQuery
+require([ 'vendor' ], function () {
+	$.ajax({
+		url: document.location.protocol + '//munchkin.marketo.net/munchkin.js',
+		dataType: 'script',
+		cache: true,
+		success: function() {
+			Munchkin.init('615-KOO-288');
+		}
+	});
+});
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+		var _paq = _paq || [];
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+				var u="//piwik.theredpin.com/";
+				_paq.push(['setTrackerUrl', u+'piwik.php']);
+				_paq.push(['setSiteId', 2]);
+				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+				g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		})();
+</script>
+<noscript><p><img src="//piwik.theredpin.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+<!-- Google remarketing -->
+<script type="text/javascript">
+var google_conversion_id = 1011897313;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+</script>
+
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+<noscript>
+	<div style="display:inline;">
+		<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1011897313/?value=0&amp;guid=ON&amp;script=0"/>
+	</div>
+</noscript>
+
+	<!-- inject -->
+
+	<!-- debugging mode -->
+	</body>
+</html>

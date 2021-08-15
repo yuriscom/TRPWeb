@@ -1,0 +1,99 @@
+@import 'mixins';
+@import 'pages/content';
+@import 'partials/list';
+@import 'partials/badges';
+
+.agents-header {
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.agents-container {
+  & > div {
+    margin: $medium-size 0;
+  }
+  .agent-card {
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+    .badges-container {
+      color: white;
+    }
+    .agent-image {
+      overflow: hidden;
+      .photo-container {
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
+        background-color: $mid-grey;
+        background-size: contain;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .agent-attributes {
+      padding: 0 $medium-size;
+      margin-bottom: $medium-size;
+      text-align: center;
+      & > div {
+        margin-top: $medium-size;
+      }
+      .agent-attribute-val {
+        font-weight: bold;
+        font-size: rem-calc(16);
+        white-space: nowrap;
+        @media #{$medium-up} {
+          font-size: rem-calc(18);
+        }
+      }
+    }
+    .agent-description {
+      padding: 0 $medium-size;
+      margin-bottom: $medium-size;
+      p {
+        margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-height: 1.5em;
+        height: 3em;
+      }
+      .agent-read-more {
+        float: right;
+      }
+      .language {
+        font-weight: bold;
+        &:after {
+          content: ', ';
+        }
+        &:last-child:after {
+          content: '';
+        }
+      }
+    }
+    .agent-languages {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .agent-footer {
+      .button {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.agents-footer {
+  margin-top: $largest-size;
+  text-align: center;
+  font-family: $light-font-family;
+  .footer-text {
+    font-size: rem-calc(22);
+  }
+  .footer-button {
+    margin-top: $large-size;
+  }
+}

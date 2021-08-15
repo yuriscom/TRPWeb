@@ -1,0 +1,47 @@
+@import 'mixins';
+@import 'pages/content';
+
+.agent-hiring {
+  h2.agent-header {
+    font-size: 2rem;
+  }
+  hr {
+    border-color: $lightest-grey;
+  }
+  .underline {
+    text-decoration: underline;
+  }
+  .hiring-cta {
+    margin-bottom: $medium-size;
+    font-size: $largest-font-size;
+    color: $green;
+    text-align: center;
+  }
+  .hiring-quotes {
+    p.description {
+      font-style: italic;
+    }
+  }
+  .agent-hiring-video {
+    @include flex-center;
+    iframe {
+      width: rem-calc(474);
+      height: rem-calc(266);
+    }
+  }
+  .agent-props {
+    img {
+      width: rem-calc(100);
+    }
+    &.props-top {
+      h2 {
+        color: #129cc0;
+      }
+    }
+    &.props-bottom {
+      h2 {
+        color: green;
+      }
+    }
+  }
+}

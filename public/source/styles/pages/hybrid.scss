@@ -1,0 +1,492 @@
+@import 'mixins';
+@import 'partials/map';
+@import 'partials/list';
+@import 'sprites/markers-sprite';
+
+.redirect-header {
+  border: none;
+}
+
+#search-modal {
+  overflow: hidden;
+  .scrolling-form {
+    padding: $medium-size 0;
+    max-height: 79%;
+    max-height: 79vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  #layer-tab {
+    -webkit-box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.75);
+  }
+
+  [data-search] .content {
+    padding: 0;
+  }
+
+  .submit-row {
+    overflow: hidden;
+    border-top: 1px solid $green;
+    -webkit-box-shadow: 0px -3px 4px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -3px 4px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px -3px 4px -4px rgba(0,0,0,0.75);
+    div {
+      padding: 0 !important;
+    }
+    a {
+      margin-bottom: 0;
+      border-radius: 0;
+      line-height: 4vh;
+
+      span {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+#hybrid {
+
+  @include grid-row();
+
+  &.portrait {
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+    #panel {
+      width: 100%;
+      height: 0%;
+      bottom: 0;
+      &.initialized {
+        @include transition(height $medium-time ease-in-out);
+      }
+      &.full-screen {
+        height: 100%;
+        padding-top: rem-calc(35);
+      }
+    }
+    #selected-list-container {
+      top: 100%;
+      left: 0;
+      height: auto;
+      bottom: 0;
+      @include transition(top $medium-time ease-in-out);
+      &.in {
+        top: rem-calc(35);
+      }
+    }
+  }
+
+  &.landscape {
+    #map {
+      float: left;
+      width: 100%;
+      height: 100%;
+    }
+    #panel {
+      right:0;
+      width: 0%;
+      height: 100%;
+      &.initialized {
+        @include transition(width $medium-time ease-in-out);
+      }
+      &.full-screen {
+        width: 100%;
+        padding-top: rem-calc(35);
+      }
+    }
+    #selected-list-container {
+      top: rem-calc(35);
+      left: 100%;
+      height: auto;
+      bottom: 0;
+      @include transition(left $medium-time ease-in-out);
+      &.in {
+        left: 0;
+      }
+    }
+  }
+
+  @media #{$large-up} {
+    #map-toggle-control {
+      display: none;
+    }
+    &.portrait {
+      #map {
+        height: 50%;
+        padding-bottom: 0;
+      }
+      #panel {
+        height: 50%;
+        padding-top: rem-calc(35);
+      }
+    }
+
+    &.landscape {
+      #map {
+        width: 50%;
+      }
+      #panel {
+        width: 50%; 
+        padding-top: rem-calc(35);
+      }
+    }
+  }
+}
+
+
+#panel {
+  background: $lightest-grey;
+  position: absolute !important;
+  overflow: hidden;
+	z-index: 1;
+  @include box-shadow($medium-outset-shadow);
+
+  #close-selected-list-button {
+    display: none;
+  }
+  #panel-information {
+    display: inline-block;
+
+    @media #{$small-only} {
+      max-width: 34%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &.has-selected {
+    #close-selected-list-button {
+      display: block;
+    }
+    #panel-map-filter-button {
+      display: none;
+    }
+    #panel-information {
+      display: none;
+    }
+    .map-toggle-button {
+      display: none;
+    }
+    .selectize-input {
+      display: none;
+    }
+  }
+
+  // TODO: refactor this to a component, if its needed on other places in future
+  & > .controls {
+    background: $white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: rem-calc(35);
+    z-index: 2;
+    overflow: visible;
+    @include box-shadow($small-outset-shadow);
+
+    #panel-information {
+      padding: 14px $small-size $medium-size;
+      float: right;
+      font-size: $medium-font-size;
+    }
+
+    .select {
+      @media #{$small-only} {
+        margin-top: rem-calc(-1);
+      }
+    }
+    .select > .selectize-input {
+      font-size: rem-calc(14);
+      .item {
+        margin-bottom: rem-calc(2);
+      }
+    }
+    .panel-button,
+    .select > .selectize-input {
+      position: relative;
+      background-color: $green;
+      border-radius: 3px;
+      top: 6px;
+      padding: 2px 3px 3px 6px;
+      &.panel-button {
+        padding: 2px 6px;
+        margin: 0px 3px;
+      }
+      color: white;
+      span {
+        color: white;
+      }
+    }
+    
+    #panel-map-filter-button {
+    	float: left;
+    }
+
+    .button {
+      width: rem-calc(80);
+			@media #{$small-only} { 
+        width: rem-calc(65);			
+			}
+      font-size: $medium-font-size;
+      line-height: 1;
+      padding: 14px $small-size $medium-size;
+    }
+    .selectize-input {
+      border: none;
+      background: transparent;
+      color: $grey;
+      font-size: $medium-font-size;
+      line-height: 1;
+      padding: $medium-size $small-size 4px;
+      @include box-shadow(none);
+      .item {
+      	margin-top: rem-calc(3);
+      }
+      padding-right: 12px;
+    }
+    .selectize-control.single {
+      float: left;
+			@media #{$small-only} {
+        padding-top: 1px;			
+			}
+      .selectize-input:after {
+        display: none !important;
+      }
+    }
+
+    #close-selected-list-button,
+    .map-toggle-button {
+      float: left;
+      text-align: left;
+      .hide-for-small-only {
+        @media #{$medium-up} {
+          /* foundation will set to block */
+          display: inline !important;
+        }
+      }
+    }
+    #sort-select-wrapper {
+      width: rem-calc(120);
+      float: left;
+      select {
+        display: inline-block;
+        padding: 0;
+      }
+    }
+  }
+
+  .spinner {
+    z-index: 0;
+    &.next {
+      top: auto;
+      height: 32px;
+      bottom: 10px;
+    }
+  }
+}
+
+[data-layer="projects"] {
+  .select > .selectize-input {
+    display: none;
+  }
+}
+
+.list-wrapper {
+  overflow: auto;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+
+  // prevent native touch events on Windows
+  -ms-touch-action: none;
+
+  // prevent the callout on tap-hold and text selection
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  // prevent text resize on orientation change, useful for web-apps
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  .list {
+    @include clearfix();
+    padding-bottom: rem-calc(50);
+    min-height: 100%;
+    width: 100%;
+
+    // prevent elements to be highlighted on tap
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    // put the scroller into the HW Compositing layer right from the start
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    ul.summary{
+      width:100%;
+          height:rem-calc(28);
+    }
+  }
+}
+
+#selected-list-container {
+  position: absolute;
+  z-index: 1;
+  background: rgba($black, 0.75);
+  @include box-shadow($medium-outset-shadow);
+
+	&.location-brief-display {
+		.location-brief {
+			width: 100%;
+			padding: rem-calc(10);
+			&.no-image {
+				img {
+					display: none;
+				}
+				.img-container {
+					height: rem-calc(118);
+				}
+			}
+		}
+		overflow-y: auto;
+		img {
+			width: 100%;
+		}
+		.img-container {
+			overflow: hidden;
+			position: relative;
+			margin-bottom: rem-calc(15);
+		}
+		color: white;
+		h1 {
+			text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+			padding: 1em rem-calc(14) 0;
+			margin: 0;
+			text-align: left;
+			background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75) 3em);
+			background-size: 100% auto;
+			bottom: -1px;
+			color: $lightest-grey;
+			left: 0;
+			position: absolute;
+			right: 0;
+			color: white;
+			position: absolute;
+			@media #{$medium-up} {
+				line-height: rem-calc(55);
+			}
+		}
+		background-color: #000;
+	}
+
+}
+
+
+#map {
+  position: relative;
+  .pm-notice {
+    z-index: 1;
+    position: absolute;
+    top: rem-calc(3);
+    width: 100%;
+    height: rem-calc(32);
+    background-color: $red;
+
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+    padding-left: $medium-size;
+
+    line-height: rem-calc(32);
+    color: white;
+    font-size: rem-calc(18);
+
+    span {
+      display: inline-block;
+      overflow: hidden;
+      &.pm-name {
+        max-width: 50%;
+        @media #{$medium-up} {
+          max-width: 66%;
+        }
+        white-space:nowrap;
+        text-overflow:ellipsis;
+      }
+    }
+    .pm-date {
+      padding-right: $medium-size;
+    }
+  }
+}
+
+/*
+TD|SA: migrate from hybrid specific to hybrid-details cross
+list specific styles above (not specific to hybrid) should be migrated as well
+ */
+
+.list-container {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  padding-left: rem-calc(7.5); /* listPadding in grid-list-view.js must be equal to this value (I know, I know) */
+  .no-slick {
+    overflow: hidden;
+  }
+  .no-auth {
+    overflow: hidden;
+  }
+}
+
+.list-items-end {
+  margin: rem-calc(-25) $small-size $medium-size $small-size;
+  padding-top: $small-size;
+  padding-bottom: $small-size;
+  text-align: center;
+}
+.list-items-unavailable-warning {
+  margin: $large-size 0;
+  color: $grey;
+}
+.list-items-unavailable {
+  height: 100%;
+  overflow-y: auto;
+  text-align: center;
+  .seo-links {
+    margin-bottom: $medium-size;
+  }
+}
+
+.list-items-spinner {
+	z-index: 0;
+	&.next {
+		top: auto;
+		height: 32px;
+		bottom: 10px;
+	}
+}
+.no-js-info {
+	margin-top: 40px;
+}
+
+#panel {
+  overflow: auto;
+}
+html.js #panel {
+  overflow: hidden;
+}

@@ -1,0 +1,62 @@
+# Node, Bower and other JavaScript and front-end development stuff
+##################################################################
+node_modules
+bower_components
+Gemfile.lock
+
+# Mac OS X Generated Files
+##########################
+Icon
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+
+
+# Windows Generated Files
+#########################
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN
+
+
+# General
+#########
+.vagrant
+.htaccess
+bin
+tmp
+log
+*.log
+*.tmp
+*.bak
+*.swp
+*.dat
+*.out
+*.pid
+*.gz
+*.seed
+*.css.map
+*.js.map
+
+
+# Project Related
+#################
+public/assets/*
+public/source/styles/sprites/*
+app/cache/*
+app/config/config.local.php
+app/views/index.volt
+.sass-cache
+vendor/phalcon-devtools
+*.volt.php
+
+
+# IDE & Editor Related
+######################
+nbproject/private/
+.idea

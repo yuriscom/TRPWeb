@@ -1,0 +1,139 @@
+// Variables
+
+$retina: "#{$screen} and (-webkit-min-device-pixel-ratio: 2),          #{$screen} and (min--moz-device-pixel-ratio: 2),          #{$screen} and (-o-min-device-pixel-ratio: 2/1),          #{$screen} and (min-device-pixel-ratio: 2),          #{$screen} and (min-resolution: 192dpi),          #{$screen} and (min-resolution: 2dppx)";
+
+// render triangle on after or before psudo elements, using borders
+@mixin tip($size: $medium-size, $direction: bottom, $color: $black, $order: after, $re-position: true, $offset: 0, $inset: false) {
+
+  @if ($re-position) {
+    position: relative;
+  }
+
+  &:#{$order} {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  content: '';
+  width: 0;
+  height: 0;
+  border: $size solid;
+
+  @if ($direction == top) {
+    left: 50%;
+    @if ($inset) {
+      bottom: $offset - rem-calc(1);
+    } @else {
+      top: -$offset + rem-calc(1);
+    }
+    margin-left: -$size;
+    margin-top: -$size * 2;
+    border-color: transparent transparent $color transparent;
+  }
+  @if ($direction == bottom) {
+    left: 50%;
+    @if ($inset) {
+      top: $offset - rem-calc(1);
+    } @else {
+      bottom: -$offset + rem-calc(1);
+    }
+    margin-left: -$size;
+    margin-bottom: -$size * 2;
+    border-color: $color transparent transparent transparent;
+  }
+  @if ($direction == left) {
+    top: 50%;
+    @if ($inset) {
+      right: $offset - rem-calc(1);
+    } @else {
+      left: -$offset + rem-calc(1);
+    }
+    margin-top: -$size;
+    margin-left: -$size * 2;
+    border-color: transparent $color transparent transparent;
+  }
+  @if ($direction == right) {
+    top: 50%;
+    @if ($inset) {
+      left: $offset - rem-calc(1);
+    } @else {
+      right: -$offset + rem-calc(1);
+    }
+    margin-top: -$size;
+    margin-right: -$size * 2;
+    border-color: transparent transparent transparent $color;
+  }
+}
+}
+
+// cut long texts in a constrained container, put ellipsis at the end
+@mixin cut() {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+@mixin multi-res-background($baseUrl, $baseRetinaUrl, $mediumUpUrl, $mediumUpRetinaUrl, $largeUpUrl) {
+  background: none;
+  background: transparent url($baseUrl) no-repeat center center;
+  background-size: cover;
+  @media #{$retina} {
+    background-image: url($baseRetinaUrl);
+  }
+  @media #{$medium-up} {
+    background-image: url($mediumUpUrl);
+    @media #{$retina} {
+      background-image: url($mediumUpRetinaUrl);
+    }
+  }
+  @media #{$large-up} {
+    background-image: url($largeUpUrl);
+  }
+}
+
+@mixin lazy-load-background($baseUrl, $baseRetinaUrl, $mediumUpUrl, $mediumUpRetinaUrl, $largeUpUrl) {
+  background-image: none;
+  &[data-src] {
+    &.lazy-home-bg {
+      @include multi-res-background($baseUrl, $baseRetinaUrl, $mediumUpUrl, $mediumUpRetinaUrl, $largeUpUrl);
+    }
+  }
+}
+
+@mixin display-flex {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+}
+
+@mixin justify-content-center {
+  justify-content: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+}
+
+@mixin justify-content-end {
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+}
+
+@mixin flex-center {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+}
+
+@mixin fadein {
+  opacity: 0;
+  @include transition(opacity 0.5s ease-in-out);
+  &.fadein {
+    opacity: 1;
+  }
+}

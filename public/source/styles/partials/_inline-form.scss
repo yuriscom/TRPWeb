@@ -1,0 +1,13 @@
+#property-inline-form,
+ #project-inline-form {
+     margin: rem-calc(50) 0;
+
+     .title {
+         margin-bottom: $large-size;
+         text-align: center;
+     }
+
+     a i {
+         margin-left: $medium-size;
+     }
+ }

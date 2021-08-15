@@ -1,0 +1,69 @@
+// removing focus outline from links & buttons
+:focus {
+  outline: none;
+}
+::-moz-focus-inner {
+  border: 0;
+}
+
+// input placeholder
+::-webkit-input-placeholder {
+  color: $grey;
+}
+:-moz-placeholder { // Firefox 18
+  color: $grey;
+  opacity: 1;
+}
+::-moz-placeholder { // Firefox 19+
+  color: $grey;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: $grey;
+}
+
+// links
+a {
+  @include transition(color $fast linear);
+}
+
+// super & sub scripts
+sup, sub {
+  font-size: 70%;
+}
+sup {
+  top: -0.3em;
+}
+
+// small
+small,
+label small {
+  color: $light-grey;
+}
+
+// form
+fieldset legend {
+  margin-left: 0;
+  font-size: $large-font-size;
+  font-family: $header-font-family;
+  text-transform: uppercase;
+  color: $blue;
+}
+
+label {
+  font-family: $header-font-family;
+  text-transform: uppercase;
+}
+
+select[multiple="true"] {
+  height: $medium-height;
+}
+
+// first header shouldn't have top margin
+h1:first-child, h2:first-child, h3:first-child {
+  margin-top: 0;
+}
+
+figure {
+  margin: 0;
+}

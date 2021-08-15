@@ -1,0 +1,44 @@
+<?php
+$view = $this->getView();
+
+ob_start();
+$protocol = 'https';
+$domain = $protocol.'://'.$_SERVER['HTTP_HOST'];
+
+$xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . "\n";
+p($xml, 1, 1);
+
+foreach ($view->pages as $page) {
+    $element = new SitemapImageUrlElement($page);
+    if(count($element->images)){
+        p("\t" . '<url><loc>' . $domain . $element->pageUrl . '</loc>', 1, 1);
+        foreach($element->images as $image) {
+            p('<image:image>' . "\n" .
+                '<image:loc>'.$image['loc'].'</image:loc>'. "\n" .
+                "\t" . '<image:caption>'.htmlspecialchars($image['caption']).'</image:caption>'. "\n" .
+                '<image:geo_location>'.htmlspecialchars($image['geo_location']).'</image:geo_location>'. "\n" .
+                '</image:image>' . "\n", 1, 1);
+        }
+        p('</url>' . "    \n", 1, 1);
+    }
+
+}
+
+p("</urlset>\n\n", 1, 1);
+
+
+
+
+class SitemapImageUrlElement {
+
+    public $pageUrl;
+    public $images;
+
+    public function __construct($element) {
+        $this->pageUrl = $element['page'];
+        $this->images = $element['images'];
+    }
+
+}

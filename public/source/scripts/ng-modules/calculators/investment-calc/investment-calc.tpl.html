@@ -1,0 +1,251 @@
+<div class="calculator-tool investment-tool" check-render ng-controller="InvestmentCalculatorController">
+<div class="row">
+<form id="mortgage-calculator-form" data-abide="ajax" novalidate="novalidate" ng-model-options="{ getterSetter: true, updateOn: 'blur' }">
+<div class="small-12 columns large-6">
+  <div class="row">
+    <div class="small-12 columns">
+      <label for="mortgage-price">Home Price</label>
+      <div class="row collapse">
+        <div class="small-12 columns with-prefix">
+          <span class="calculator-prefix">$</span>
+          <input integer type="text" name="mortgage-price" id="mortgage-price"
+                 ng-model="invest.price" ng-change="calculator.changePrice()"
+                 placeholder="" class="changed-value" required data-abide-validator="mortgage-amount" autocomplete="off">
+          <small class="error"></small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="row collapse">
+        <label for="mortgage-downpayment">Down Payment</label>
+        <div class="small-12 columns">
+          <div class="row collapse">
+            <div>
+              <div class="small-8 columns with-prefix">
+                <span class="calculator-prefix">$</span>
+                <input integer type="text" name="mortgage-downpayment" id="mortgage-downpayment"
+                       ng-model="invest.downpayment" ng-change="calculator.changeDownpayment()"
+                       placeholder="" class="changed-value" required data-abide-validator="mortgage-downpayment" autocomplete="off">
+                <small class="error"></small>
+              </div>
+              <div class="small-4 columns with-postfix">
+                <span class="calculator-postfix">%</span>
+                <input integer type="text" name="mortgage-downpayment-percent" id="mortgage-downpayment-percent"
+                       ng-model="invest.downpaymentPercent" ng-change="calculator.changeDownpaymentPercent()"
+                       placeholder="" class="changed-value" required data-abide-validator="mortgage-downpayment-percent" autocomplete="off">
+                <small class="error"></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <label for="mortgage-interest-percent">Annual Loan Interest Rate</label>
+      <div class="row collapse">
+        <div class="small-12 columns with-postfix">
+          <span class="calculator-postfix">%</span>
+          <input percent type="text" name="mortgage-interest-percent" id="mortgage-interest-percent"
+                 ng-model="invest.mortgageInterestPercent"
+                 placeholder="" class="changed-value" required data-abide-validator="mortgage-rate" autocomplete="off">
+          <small class="error"></small>
+        </div>
+      </div>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <label for="mortgage-amortization">Amortization Period</label>
+      <div class="row collapse">
+        <div class="small-12 columns with-large-postfix">
+          <span class="calculator-postfix">years</span>
+          <input integer type="text" name="mortgage-amortization" id="mortgage-amortization"
+                 ng-model="invest.amortization"
+                 placeholder="" class="changed-value align-left" required data-abide-validator="mortgage-amortization" autocomplete="off">
+          <small class="error"></small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <label for="mortgage-home-insurance">Annual Insurance</label>
+      <div class="row collapse">
+        <div class="small-12 columns with-prefix with-large-postfix">
+          <span class="calculator-prefix">$</span>
+          <span class="calculator-postfix">/year</span>
+          <input integer type="text" name="mortgage-home-insurance" id="mortgage-home-insurance"
+                 ng-model="invest.homeInsurance"
+                 placeholder="" class="changed-value" data-abide-validator="" autocomplete="off">
+        </div>
+      </div>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <div class="row collapse">
+        <label for="mortgage-taxes">Annual Property Tax</label>
+        <div class="small-12 columns">
+          <div class="row collapse">
+            <div>
+              <div class="small-8 columns with-prefix with-large-postfix">
+                <span class="calculator-prefix">$</span>
+                <span class="calculator-postfix">/year</span>
+                <input integer type="text" name="mortgage-taxes" id="mortgage-taxes"
+                       ng-model="invest.tax" ng-change="calculator.changeTax()"
+                       placeholder="" class="changed-value" required data-abide-validator="mortgage-taxes" autocomplete="off">
+                <small class="error"></small>
+              </div>
+              <div class="small-4 columns with-postfix">
+                <span class="calculator-postfix">%</span>
+                <input percent type="text" name="mortgage-tax-percent" id="mortgage-tax-percent"
+                       ng-model="invest.taxPercent" ng-change="calculator.changeTaxPercent()"
+                       placeholder="" class="changed-value" required data-abide-validator="mortgage-taxes-percent" autocomplete="off">
+                <small class="error"></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <label for="mortgage-maintenance">Unit Size</label>
+      <div class="row collapse">
+        <div class="small-12 columns with-large-postfix">
+          <span class="calculator-postfix">sq. ft.</span>
+          <input integer type="text" name="mortgage-unit-size" id="mortgage-unit-size"
+                 ng-model="invest.unitSize"
+                 placeholder="" class="changed-value" data-abide-validator="" autocomplete="off">
+        </div>
+      </div>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <label for="mortgage-maintenance">Monthly Maintenance</label>
+      <div class="row collapse">
+        <div class="small-12 columns with-prefix with-postfix">
+          <span class="calculator-prefix">$</span>
+          <span class="calculator-postfix">/sq. ft. per month</span>
+          <input percent type="text" name="mortgage-maintenance" id="mortgage-maintenance"
+                 ng-model="invest.maintenance"
+                 placeholder="" class="changed-value" data-abide-validator="" autocomplete="off">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <label for="mortgage-rental-income">Rental Income</label>
+      <div class="row collapse">
+        <div class="small-12 columns with-prefix with-large-postfix">
+          <span class="calculator-prefix">$</span>
+          <span class="calculator-postfix">/month</span>
+          <input integer type="text" name="mortgage-rental-income" id="mortgage-rental-income"
+                 ng-model="invest.rentalIncome"
+                 placeholder="" class="changed-value" data-abide-validator="" autocomplete="off">
+          <small class="error"></small>
+        </div>
+      </div>
+    </div>
+      <div class="small-12 medium-6 columns">
+          <label for="mortgage-rental-income">Annual Rental Income Increase</label>
+          <div class="row collapse">
+              <div class="small-12 columns with-postfix">
+                  <span class="calculator-postfix">%</span>
+                  <input percent type="text" name="mortgage-annual-gain" id="mortgage-annual-gain"
+                         ng-model="invest.annualGain"
+                         placeholder="" class="changed-value" data-abide-validator="" autocomplete="off">
+                  <small class="error"></small>
+              </div>
+          </div>
+      </div>
+  </div>
+  <button ng-click="flickerSummary()" class="small-12 columns button large" id="calculator-refresh-payment">
+    Calculate
+  </button>
+  <div class="small-12 columns">
+    <p class="disclaimer">
+      Disclaimer:  TheRedPin, Brokerage does not warrant nor endorse the accuracy of this tool.  This tool is for casual use only.  The results generated should not be construed as advice or recommendations.  Always speak with a professional accountant and other professionals before making investment real estate decisions.
+    </p>
+  </div>
+</div>
+<div class="small-12 columns large-6 flicker-section" ng-class="{ flicker: flickerClicked }">
+  <div class="row collapse summary-container">
+    <div class="h3">3 Year Detailed Report</div>
+    <div class="small-12 medium-6 columns">
+      <div class="small-12 columns summary-name">Loan Amount</div>
+      <div class="small-12 columns summary-value">$ {{ investSummary.principal() | number:0 }}</div>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <div class="small-12 columns summary-name">Monthly Payment</div>
+      <div class="small-12 columns summary-value">$ {{ investSummary.mortgage()[0] | number:0 }}</div>
+    </div>
+  </div>
+  <table class="small-12 columns">
+    <tr>
+      <td></td>
+      <td>
+        Year 1
+      </td>
+      <td>Year 2</td>
+      <td>Year 3</td>
+    </tr>
+    <tr class="summary-row bold-text">
+      <td>Total Monthly Income</td>
+      <td ng-repeat="val in investSummary.totalMonthlyIncome() track by $index">$ {{ val | number:0 }}</td>
+    </tr>
+    <tr class="bold-text">
+      <td>Monthly Expenses</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Insurance</td>
+      <td ng-repeat="val in investSummary.insurance() track by $index">$ {{ val | number:0 }}</td>
+    </tr>
+    <tr>
+      <td>Taxes</td>
+      <td ng-repeat="val in investSummary.tax() track by $index">$ {{ val | number:0 }}</td>
+    </tr>
+    <tr>
+      <td>Mortgage</td>
+      <td ng-repeat="val in investSummary.mortgage() track by $index">$ {{ val | number:0 }}</td>
+    </tr>
+    <tr>
+      <td>Maintenance</td>
+      <td ng-repeat="val in investSummary.maintenance() track by $index">$ {{ val | number:0 }}</td>
+    </tr>
+    <tr class="summary-row bold-text">
+      <td>Total Monthly Expenses</td>
+      <td ng-repeat="val in investSummary.totalMonthlyExpenses() track by $index">$ {{ val | number:0 }}</td>
+    </tr>
+    <tr class="bold-text">
+      <td>Return on Investment</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Annual Cashflow After Expenses</td>
+      <td ng-repeat="val in investSummary.annualCashflowAfterExpenses() track by $index">$ {{ val | number:0 }}</td>
+    </tr>
+    <tr>
+      <td>Monthly Cash Flow After Expenses</td>
+      <td ng-repeat="val in investSummary.monthlyCashflowAfterExpenses() track by $index">$ {{ val | number:0 }}</td>
+    </tr>
+    <tr>
+      <td>Mortgage Principal Pay Down</td>
+      <td ng-repeat="val in investSummary.mortgagePrincipalPayDown() track by $index">$ {{ val | number:0 }}</td>
+    </tr>
+    <tr class="summary-row bold-text">
+      <td>Annual Return</td>
+      <td ng-repeat="val in investSummary.annualReturn() track by $index">{{ val | number:2 }} %</td>
+    </tr>
+  </table>
+</div>
+</form>
+</div>
+</div>

@@ -1,0 +1,103 @@
+.badges-container {
+  padding: 0 $medium-size;
+  height: 100%;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+
+  .top-left {
+    position: absolute;
+    top: rem-calc(12);
+    left: 0;
+  }
+  .top-right {
+    position: absolute;
+    top: rem-calc(12);
+    right: rem-calc(12);
+  }
+  .bottom-left {
+    position: absolute;
+    bottom: $medium-size;
+    left: 0;
+  }
+  .inline {
+    display: inline;
+  }
+  .badge {
+    background-color: $dark-grey;
+    padding: rem-calc(8);
+    font-size: $large-font-size;
+  }
+  .badge-wrapper {
+    background: none;
+    .changelog-badge,
+    .vip-badge {
+      padding: rem-calc(8) rem-calc(8);
+      display: inline-block;
+      background-color: $green;
+
+      .icon {
+        padding-left: 0;
+        font-size: $large-font-size;
+      }
+      &.sold-badge {
+        padding-left: $large-size;
+        padding-right: $large-size;
+      }
+    }
+  }
+  .badge-primary {
+    font-size: rem-calc(22);
+  }
+  .price-badge {
+    .price {
+      font-size: $largest-font-size;
+    }
+  }
+}
+.icon-container {
+  li:first-child {
+    margin-right: 1rem;
+  }
+  li:last-child {
+    margin-right: 0;
+  }
+  .icon {
+    font-size: rem-calc(35);
+    color: $dark-grey;
+    text-shadow: 
+      -1px -1px 0 white
+      , 1px -1px 0 white
+      , -1px 1px 0 white
+      , 1px 1px 0 white;
+    opacity: 0.66;
+    &.large {
+      font-size: rem-calc(38);
+    }
+    &:hover {
+      opacity: 0.66;
+    }
+    &.map-marker {
+      &:hover {
+        opacity: 1;
+      }
+      &.active-marker {
+        opacity: 1;
+        color: $green;
+      }
+    }
+    &.favorite-icon {
+      &:hover {
+        color: $red;
+      }
+      &.favorited {
+        opacity: 1;
+        color: $red;
+        &:hover {
+          opacity: 0.66;
+        }
+      }
+    }
+  }
+}

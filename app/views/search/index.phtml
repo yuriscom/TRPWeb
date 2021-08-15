@@ -1,0 +1,42 @@
+<?php
+$view = $this->getView();
+?>
+
+<form action="<?= $this->tag->url(array(array("for" => "search-results"))) ?>" method="post">
+    Price min: <input type="text" id="COMMON_price_min" name="price_min" value="" />
+    <br/>
+    Price max: <input type="text" id="COMMON_price_max" name="price_max" value="" />
+    <br/>
+    Num beds: <input type="text" id="COMMON_num_beds"  name="num_beds"  value="" />
+    <br/>
+    Num baths: <input type="text" id="COMMON_num_baths" name="num_baths" value="" />
+    <br/>
+    <?php
+    echo $this->tag->selectStatic(
+            array(
+                "type",
+                array(
+                    "condo-apt" => "Condo Apartment",
+                    "condo-townhouse" => "Condo Townhouse",
+                    "detached" => "Detached"
+                )
+            )
+    );
+    ?>
+    
+    <?php
+    $cities = array();
+    foreach ($view->cities as $city) {
+        $cities[$city->id] = $city->name;
+    }
+    echo $this->tag->selectStatic(
+            array(
+                "city",
+                $cities
+            )
+    );
+    ?>
+    
+    <br/>
+    <input type="submit"/>
+</form>

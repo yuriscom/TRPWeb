@@ -1,0 +1,22 @@
+<?php
+$view = $this->getView();
+?>
+
+<h1>Debug</h1>
+
+<h3>Requests</h3>
+<table>
+    <tr>
+        <td style="font-size:10px; font-weight: bold">Service</td>
+        <td style="font-size:10px; font-weight: bold">Endpoint</td>
+        <td style="font-size:10px; font-weight: bold">Generated Url</td>
+        <td style="font-size:10px; font-weight: bold">Time (s)</td>
+    </tr>
+    <?php
+    if (isset($view->debugProfileRequestsAr) && is_array($view->debugProfileRequestsAr)) {
+        foreach ($view->debugProfileRequestsAr as $res) {
+            $this->partial('partials/debug-profile-request', $res);
+        }
+    }
+    ?>
+</table>

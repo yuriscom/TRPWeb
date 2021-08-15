@@ -1,0 +1,37 @@
+<div class="subscriptions-container">
+  <div class="row collapse">
+    <h1 class="title" ng-if="!alternateEmail">My Alerts & Emails</h1>
+    <h1 class="title" ng-if="alternateEmail">Alerts & Emails for {{ alternateEmail }}</h1>
+    <p class="description">Receive valuable insight, news, and tips from TheRedPin directly to your inbox.</p>
+  </div>
+  <div class="row collapse">
+    <div class="small-12 columns notice {{ notice.type }}" ng-class="{ hidden: !notice.message }">
+      <div class="message">{{ notice.message }}</div>
+    </div>
+  </div>
+  <div class="subscriptions row collapse">
+    <div ng-repeat="sub in subscriptions" class="columns small-12 subscription" ng-class="{disabled: !globalSubscription.status}">
+      <input id="{{ sub.id }}" type="checkbox" ng-model="sub.status" ng-value="sub.status"
+        ng-true-value="1" ng-false-value="0"
+        ng-disabled="!globalSubscription.status">
+      <label for="{{ sub.id }}">Yes! I want to subscribe to TheRedPin {{ sub.SubscriptionType.name }}</label>
+    </div>
+  </div>
+  <hr>
+  <div class="row collapse">
+    <div class="columns small-12 global-unsub">
+      <input id="master-toggle" type="checkbox" ng-checked="!globalSubscription.status" ng-model="globalSubscription.status"
+        ng-true-value="0" ng-false-value="1" ng-change="toggleGlobal()">
+      <label for="master-toggle">
+        I do not wish to receive any email notifications
+      </label>
+    </div>
+  </div>
+  <div class="row collapse">
+    <form ng-class="{ loading: updatingSubscriptions }">
+      <button class="button small-12 medium-8 large-6 columns" ng-click="updateSubscriptions()">
+        Update Settings <img src="/assets/graphics/ajax-loader.png" alt="" class="loading loading-spinner">
+      </button>
+    </form>
+  </div>
+</div>

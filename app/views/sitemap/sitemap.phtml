@@ -1,0 +1,37 @@
+<?php
+$view = $this->getView();
+
+ob_start();
+$protocol = 'https';
+$domain = $protocol.'://'.$_SERVER['HTTP_HOST'];
+
+$xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
+        '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+p($xml, 1, 1);
+
+foreach ($view->pages as $page) {
+    $element = new SitemapUrlElement($page['url']);
+    p("\t" . '<url><loc>' . $domain . $element->url . '</loc><lastmod>' . $element->lastmod . '</lastmod><changefreq>' . $element->changefreq . '</changefreq><priority>' . $element->priority . '</priority></url>' . "    \n", 1, 1);
+}
+
+
+p("</urlset>\n\n", 1, 1);
+
+
+
+
+class SitemapUrlElement {
+
+    public $url;
+    public $lastmod;
+    public $changefreq;
+    public $priority;
+
+    public function __construct($url, $lastmod = '', $changefreq = 'weekly', $priority = '1.0') {
+        $this->url = $url;
+        $this->lastmod = ($lastmod) ? $lastmod : date("Y-m-d");
+        $this->changefreq = $changefreq;
+        $this->priority = $priority;
+    }
+
+}

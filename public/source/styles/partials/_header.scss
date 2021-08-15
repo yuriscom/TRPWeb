@@ -1,0 +1,380 @@
+#header {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $header-z-index;
+  height: $header-height;
+  background: $white;
+  @include box-shadow($small-outset-shadow);
+
+  .top-bar {
+    @include grid-row();
+    max-width: 100%;
+    padding: 0 $medium-size;
+
+    &.active-left-menu {
+      #left-off-canvas-toggle {
+        @include tip($small-size, top, $red, $inset: true);
+      }
+    }
+
+    &.active-right-menu {
+      #account-buttons {
+        @include tip($small-size, top, $red, $inset: true);
+      }
+    }
+
+    .tab-bar.left {
+      height: $header-height + rem-calc(3);
+      background: none;
+
+      #left-off-canvas-toggle {
+        height: $header-height + rem-calc(1);
+      }
+    }
+
+    &:not(.active-left-menu):not(.active-right-menu) {
+      .active {
+        &:not(.no-tip) {
+          @include tip($small-size, top, $red, $inset: true);
+        }
+      }
+    }
+
+    @mixin show-menu() {
+      border: 1px solid #EFEFEF;
+      height: auto !important;
+      max-height: 300px;
+
+    }
+
+    .menu-nav-link {
+      line-height: $header-height;
+
+      &.dropdown-toggle {
+        & + .menu-dropdown {
+          position: absolute;
+          top: $header-height;
+          margin-left: -45px;
+          height: 0 !important;
+          max-height: 0;
+          overflow: hidden;
+          @include transition(max-height $fast linear);
+
+          &:hover {
+            @include show-menu();
+          }
+
+          > li {
+            clear: both;
+            width: 100%;
+            background-color: $white;
+            height: auto !important;
+            text-align: center;
+            &:hover {
+
+              a {
+                background-color: whitesmoke;
+                color: $red;
+              }
+            }
+
+            a {
+              font-size: $large-font-size;
+              color: $grey;
+              top: 0;
+              transform: none;
+              transition: none;
+            }
+            .active {
+              background-color: #EFEFEF;
+              color: $red;
+
+              &:after {
+                content: inherit;
+              }
+            }
+          }
+        }
+        &:hover {
+          content: inherit;
+          & +.menu-dropdown {
+            @include show-menu();
+          }
+
+        }
+      }
+    }
+
+    .active {
+      a {
+        background: transparent;
+      }
+
+      span {
+        color: $red;
+      }
+    }
+  }
+
+  nav.top-bar {
+    height: $header-height + rem-calc(3);
+    border-bottom: rem-calc(3) solid $red;
+  }
+
+}
+
+#theredpin-logo-full {
+  height: rem-calc(35);
+  width: rem-calc(145);
+  margin-top: rem-calc(15);
+
+}
+#theredpin-logo-mini {
+  height: rem-calc(35);
+  width: rem-calc(23);
+  margin-top: rem-calc(15);
+}
+#theredpin-logo-full {
+  display: none;
+}
+.top-bar-section {
+  .left > ul {
+    display: none;
+  }
+}
+@media (min-width: 642px) {
+  .top-bar-section {
+    .left > ul {
+      display: inline;
+    }
+  }
+  #theredpin-logo-mini {
+    display: none;
+  }
+  #theredpin-logo-full {
+    display: inline-block;
+  }
+}
+
+
+.menu-nav-link,
+#search-button,
+#chat-button,
+#resale-button,
+#presale-button,
+#account-buttons,
+.account-button,
+#unlogged-account-buttons,
+#right-off-canvas-toggle{
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-size: $large-font-size !important; // for now - remove !important after refactoring this file
+  line-height: $header-height;
+  top: inherit;
+
+
+  .icon {
+    color: $grey;
+    margin-left: $small-size;
+    position: relative;
+    top: rem-calc(5);
+  }
+  span {
+    color: $grey;
+    line-height: rem-calc(6);
+  }
+
+  &:hover {
+    a span {
+      color: $red;
+    }
+    span,
+    i {
+     color: $red; 
+    }    
+  }
+}
+
+
+
+
+#search-button,
+#chat-button,
+#unlogged-account-buttons button,
+#account-buttons .menu-icon {
+  position: relative;
+
+  span {
+    position: relative !important;
+    top: 2px;
+  }
+}
+
+.tab-bar.left {
+  position: relative !important;
+}
+
+.top-bar-section a.left {
+  position: relative !important;
+}
+
+#left-off-canvas-toggle {
+  margin-right: $medium-size;
+}
+
+#account-buttons,
+#unlogged-account-buttons, {
+  padding-left: rem-calc(5);
+  a.menu-icon {
+
+    i {
+      margin-top: rem-calc(6);
+    }
+
+    span {
+      bottom: rem-calc(5);
+    }
+  }
+}
+
+body {
+  &.authenticated {
+    .logged-out-only {
+      display: none;
+    }
+    .logged-in-only {
+      display: block;
+    }
+    span.logged-in-only {
+      display: inline-block;
+    }
+  }
+  &:not(.authenticated) {
+    .logged-out-only {
+      display: block;
+    }
+    span.logged-out-only {
+      display: inline-block;
+    }
+    .logged-in-only {
+      display: none;
+    }
+    #account-buttons {
+      i {
+        margin-right: 0;
+      }
+      + li + li, + li + li a {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+#resale-button,
+#presale-button {
+  span {
+    font-size: $medium-font-size;
+  }
+}
+
+.top-bar-section {
+  #top-logo {
+    background: $white;
+  }
+
+  a.left {
+    margin-right: $medium-size;
+  }
+
+  .left .has-form a, .right .has-form a {
+    padding: $medium-size 0;
+    padding: 0;
+    position: relative;
+
+    span {
+      position: relative;
+      top: rem-calc(2);
+    }
+  }
+
+  & > .left {
+    width: rem-calc(65);
+
+    @media #{$medium-up} {
+      width: auto;
+    }
+  }
+
+}
+
+.top-bar .top-bar-section {
+  ul.left {
+    & > li {
+      height: $header-height;
+      margin-right: 20px;
+      &:nth-child(4) {
+        display: none;
+        @media (min-width:966px) {
+          display: list-item;
+        }
+      }
+    }
+  }
+
+  ul.right {
+    width: auto;
+
+    li {
+      padding: 0 $medium-size;
+      @media (min-width:885px) {
+        padding: 0 $large-size;
+      }
+      float: left;
+      background: $white;
+      height: $header-height;
+    }
+
+    #back-trp1 {
+      padding: 0;
+
+      &:hover {
+        a {
+          background: none;
+        }
+      }
+
+      a {
+        padding: 0;
+        line-height: $large-size;
+
+        &:hover {
+          background: none;
+        }
+      }
+
+      button {
+        border: none;
+        padding: $small-size;
+        background: $grey;
+        border-radius: 2px;
+        font-family: $light-font-family;
+      }
+    }
+
+    @media #{$medium-up} {
+      #back-trp1 {
+        padding-right: $large-size;
+
+        button {
+          padding: $small-size $medium-size;
+        }
+      }
+    }
+  }
+}

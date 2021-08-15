@@ -1,0 +1,10 @@
+{{ partial('partials/marketing/buy-sell-main') }}
+{{ partial('partials/marketing/buy-sell-single-quote') }}
+{{ partial('partials/marketing/buy-sell-quotes') }}
+{{ partial('partials/marketing/marketing-media') }}
+{{ partial('partials/marketing/buy-sell-props') }}
+{{ partial('partials/marketing/buy-sell-agents') }}
+{{ partial('partials/marketing/trp-one') }}
+{{ partial('partials/marketing/buy-sell-services') }}
+{{ partial('partials/marketing/marketing-video') }}
+{{ partial('partials/marketing/buy-sell-conclusion') }}

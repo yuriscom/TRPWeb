@@ -1,0 +1,18 @@
+<?php
+
+$view = $this->getView();
+
+ob_start();
+$protocol = 'https';
+$domain = $protocol.'://'.$_SERVER['HTTP_HOST'];
+
+$xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" .
+        '<sitemapindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+p($xml, 1, 1);
+
+foreach ($view->sitemaps as $sitemap) {
+    p("\t" . '<sitemap><loc>' . $sitemap->loc . '</loc><lastmod>' . $sitemap->lastmod . '</lastmod></sitemap>' . "    \n", 1, 1);
+}
+
+
+p("</sitemapindex>\n\n", 1, 1);

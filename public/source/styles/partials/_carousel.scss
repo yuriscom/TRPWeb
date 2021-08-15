@@ -1,0 +1,193 @@
+#gallery {
+  margin-top: rem-calc(36) !important;
+  .badge {
+    position: absolute;
+    left: 0;
+    top: $large-size;
+    width: rem-calc(300);
+  }
+
+  .sold-badge {
+    color: white;
+    width: initial;
+    padding: $medium-size $largest-size;
+    background-color: $green;
+    font-size: $xlarge-font-size;
+  }
+
+  .overlay {
+    position: absolute;
+    bottom: $medium-size;
+    width: 100%;
+
+    .button,
+    .label {
+      margin: 0 $small-size;
+    }
+    @media #{$small-only} {
+      span {
+        top: rem-calc(10);
+      }
+    }
+  }
+
+  .logo {
+    width: rem-calc(150);
+    height: rem-calc(80);
+    position: absolute;
+    bottom: 0;
+    left: $medium-size;
+
+    img {
+      position: absolute;
+      bottom: 0;
+      max-height: 100%;
+      max-width: 100%;
+      border: 2px solid $white;
+    }
+  }
+
+  .photos {
+    .slick-spinner {
+      display: none;
+    }
+    &.initializing-slick {
+      min-height: 237px;
+      .slick-spinner {
+        position: absolute;
+        top: 38%;
+        right: 50%;
+        display: inherit;
+      }
+      .photo {
+        display: none;
+      }
+    }
+  }
+
+  .photo {
+    &:hover {
+      cursor: pointer;
+    }
+    .img-container {
+      position: relative;
+      padding-bottom: 56.12%;
+      height: 0;
+      overflow: hidden;
+    }
+    min-height: rem-calc(150);
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      &.portrait {
+        margin-top: -20%;
+      }
+    }
+  }
+
+  .unavailable {
+    height: rem-calc(100);
+  }
+
+  .no-photos {
+    height: rem-calc(60);
+    .unavailable {
+      z-index: -999999;
+    }
+  }
+
+  .slick-track {
+    margin: 0 auto;
+  }
+}
+
+#carousel {
+  background: rgba($black, 0.8);
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  // header's bottom red border
+  margin-top: 3px;
+  padding: $medium-size;
+
+  & > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  .h1, .h2, .h3, .h4, .h5, .h6, p {
+    color: $white;
+  }
+
+  .close-carousel {
+    position: absolute;
+    z-index: 999999999;
+    right: $large-size;
+    top: $medium-size;
+    font-size: 3rem;
+    color: $green;
+    &:hover {
+      color: $white;
+    }
+  }
+
+  .photo {
+    background: none;
+  }
+
+  img {
+    -webkit-user-drag: none;
+  }
+
+}
+
+#main-carousel {
+  height: auto;
+  margin-bottom: $large-size;
+
+  .photos,
+  .slick-slider,
+  .slick-list,
+  .slick-track,
+  .photo,
+  .photo img {
+    height: auto;
+  }
+}
+
+#thumbnails-carousel {
+  max-height: rem-calc(100);
+
+  .photo {
+    padding: 0 $medium-size;
+    img {
+      height: auto;
+      max-height: 100%;
+    }
+  }
+
+  .slick-list {
+    overflow: visible;
+  }
+
+  .slick-center img {
+    @include scale(1.2);
+    border: 3px solid $green;
+  }
+
+  @media #{$medium-up} {
+    max-height: rem-calc(75);
+  }
+}
+
+.gallery-book-a-tour-modal {
+  max-height: 99vh;
+  top: rem-calc(2px);
+}

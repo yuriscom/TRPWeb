@@ -1,0 +1,170 @@
+@import 'mixins';
+
+//account panel styles
+#account-panel {
+	text-align: left;
+	margin-top: rem-calc(20);
+  [data-abide] .server-error.server-error-active small.error {
+    display: block;
+  	line-height: 1rem;
+	}
+	.button {
+		padding-top: rem-calc(16);
+		padding-bottom: rem-calc(16);
+		font-size: 18px;
+	}
+	.account-title {
+		margin-top: $large-size;
+		margin-bottom: $medium-size;
+		font-size: rem-calc(24);
+	}
+	.message {
+		p {
+			/*margin-top: $medium-size;*/
+		}
+	}
+	.medium-bottom-margin {
+		margin-bottom: $medium-size;
+	}
+  .account-tabs {
+  	text-align: center;
+  	margin-top: $medium-size;
+  	margin-bottom: $large-size;
+  	.account-tab-nav {
+  		color: black;
+	  	font-family: $regular-font-family;
+	  	font-size: rem-calc(20);
+	  	background-color: #f7f7f7;
+	  	border-top: 1px solid $light-grey;
+	  	border-bottom: 1px solid $light-grey;
+	  	padding: 8px 8px;
+  		&.inactive {
+  			color: $light-grey;
+  		}
+  		&.active {
+  			padding-top: 5px;
+	  		border-top: 4px solid $green;
+	  		border-bottom: none;
+	  		background-color: white;
+  		}
+  		&:hover {
+  			padding-top: 5px;
+  			border-top: 4px solid $green;
+  			color: black;
+  		}
+	  	&.left-tab {
+	  		border-left: 1px solid $green;
+	  		&.inactive {
+	  			border-right: 1px solid $green;
+	  		}
+	  	}
+	  	&.right-tab {
+	  		border-right: 1px solid $green;
+	  		&.inactive {
+	  			border-left: 1px solid $green;
+	  		}
+	  	}
+  	}
+  }
+  h1 {
+  	font-size: $largest-font-size;
+  	font-weight: $bold-font-weight;
+  	margin-bottom: rem-calc(10);
+  }
+  p {
+  	line-height: 1rem;
+  }
+	input {
+		margin-bottom: rem-calc(10);
+		+ a {
+			float: right;
+			position: relative;
+			top: rem-calc(-5);
+			margin-bottom: rem-calc(10);
+		}
+	}
+	.selectize-control {
+		margin-bottom: rem-calc(5);
+	}
+
+	a {
+		color: $green;
+		font-family: "ProximaNova Semibold";
+		&.back-to-map {
+			margin-top: rem-calc(-18);
+		}
+	}
+
+	a:hover, a:active {
+		color: $dark-green;
+	}
+	
+	label {
+		text-transform: none;
+		font-size: 1rem;
+	}
+	.content {
+    background: $white;
+    padding: $medium-size $large-size;
+    @include box-shadow($small-outset-shadow);
+  }
+  
+  input[data-invalid], [data-invalid] + .selectize-control .selectize-input {
+  	border: 1px solid $light-red;
+  }
+  small.error {
+  	background: #fff;
+  	color: $dark-red;
+  	margin: rem-calc(-10) 0 0;
+  	font-style: normal;
+  }
+  
+  button {
+  	padding-right: rem-calc(36);
+  }
+
+}
+
+//specific to modal presentation
+.reveal-modal {
+	margin: 0 auto;
+	right: 0;
+}
+.account-modal {
+  max-width: rem-calc(500);
+  min-height: inherit;
+  padding-bottom: 0;
+  padding-top: 0;
+  #account-modal {
+    margin-top: 0;
+    #account-panel {
+      margin-top: 0;
+    }
+  }
+}
+.tos-modal {
+  #tos-modal {
+    .accept {
+    	margin: 0 !important;
+    }
+  }
+}
+
+
+//page wide effects
+#content > div.auth-holder {
+	text-align: center;
+	min-height: 33vh;
+  margin-bottom: $largest-size;
+}
+.loading-spinner.main-spinner {
+	width: rem-calc(32);
+	height: rem-calc(32);
+	margin: rem-calc(50) auto rem-calc(20);
+	animation:spin 1s linear infinite;
+}
+@keyframes spin {
+	100% {
+		transform:rotate(360deg);
+	}
+}

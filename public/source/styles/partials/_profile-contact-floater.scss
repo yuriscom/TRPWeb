@@ -1,0 +1,33 @@
+#book-a-tour-floater, .book-a-tour-floater, #contact-floater {
+	h2, div.h2 {
+	  position: relative;
+	  top: 50%;
+	  -ms-transform: translateY(18%);
+	  -webkit-transform: translateY(18%);
+	  -moz-transform: translateY(18%);
+	  -o-transform: translateY(18%);
+	  transform: translateY(18%);
+	}
+	a.right.button {
+		margin: -$medium-size 0;
+	}
+
+	a i {
+		margin-left: $medium-size;
+	}
+
+	.text span {
+		display: none;
+	}
+
+	@media #{$small-only} {
+		.text {
+			display: none;
+		}
+	}
+	@media #{$large-up} {
+		.text span {
+			display: inline;
+		}
+	}
+}

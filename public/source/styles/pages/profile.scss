@@ -1,0 +1,603 @@
+@import 'mixins';
+@import 'partials/map';
+@import 'partials/carousel';
+@import 'partials/title';
+@import 'partials/location';
+@import 'partials/descriptions';
+@import 'partials/similar-properties';
+@import 'partials/services';
+@import 'partials/walkscore';
+@import 'partials/floor-plans';
+@import 'partials/profile-contact-floater';
+@import 'partials/inline-form';
+@import 'partials/calculator-tool';
+
+
+.collapse,
+.scroll-to {
+    cursor: pointer;
+}
+
+#seo-breadcrumbs {
+    .breadcrumbs {
+        margin-top: $medium-size;
+        margin-bottom: 0;
+        a, li:before {
+            font-size: rem-calc(12);
+        }
+    }
+}
+
+#sticky-summary {
+    position:fixed;
+    top:40px;
+    left:0;
+    z-index: 99;
+
+}
+
+small.error{
+    min-width:100px;
+}
+.street-view-disable {
+    &.active {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: transparent;
+        z-index: 1;
+    }
+}
+
+#header {
+    .sticky-container {
+        height: 36px;
+        overflow: hidden;
+        background: $mid-grey;
+    }
+}
+
+.sticky-container {
+    &, * {
+        color: $green;
+    }
+    .row{
+        margin-top:rem-calc(2);
+        margin-bottom:rem-calc(2);
+    }
+    position: fixed;
+    top: $header-height + rem-calc(3);
+    z-index: 99;
+    background: $sticky-grey;
+    @include box-shadow($small-outset-shadow);
+    span {
+        color: $green;
+    }
+    .price {
+        font-size: $largest-font-size;
+    }
+    .button {
+        color: $white;
+        margin-bottom: 0;
+        display: inline;
+    }
+    .mobile-header-icon {
+        top: rem-calc(3);
+    }
+    .phone-button{
+        padding-right:0;
+        height:rem-calc(36);
+        @media #{$small-only}{
+            padding-left:0 !important;
+        }
+    }
+    .short-links {
+        padding: 0 $medium-size;
+
+        a span {
+            text-decoration: underline;
+        }
+    }
+    .questions{
+        margin-top:rem-calc(4);
+        span{
+            vertical-align: middle;
+        }
+    }
+    ul.summary li{
+        display: inline;
+        line-height:1.8;
+        vertical-align: baseline;
+    }
+    .icon{
+        color:$white;
+        @media #{$medium-up} {
+            margin-right:rem-calc(8);
+        }
+        &.favorite-icon {
+            font-size: rem-calc(28);
+            color: $dark-grey;
+            text-shadow:
+              -1px -1px 0 white
+              , 1px -1px 0 white
+              , -1px 1px 0 white
+              , 1px 1px 0 white;
+            opacity: 0.66;
+            @media #{$medium-up} {
+                position: relative;
+                top: rem-calc(3);
+            }
+            &:hover {
+                color: $red;
+                cursor: pointer;
+            }
+            &.favorited {
+                opacity: 1;
+                color: $red;
+                &:hover {
+                    opacity: 0.66;
+                }
+            }
+        }
+    }
+    .info-line{
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        @media #{$small-only}{
+            font-size:0.8rem;
+            margin-top: rem-calc(6);
+            padding:0;
+        }
+    }
+
+}
+
+
+#sticky-footer-container {
+    .message-box{
+        text-align: center;
+        .columns:nth-child(-n+1){
+            border-right: 1px solid $light-grey;
+        }
+    }
+
+    a {
+        display:block;
+        width:100%;
+        height:100%;
+    }
+
+    position: fixed;
+    left: 0;
+    bottom:0;
+    z-index: 10;
+    background: $sticky-grey;
+    color: $black;
+    @include box-shadow($small-outset-shadow);
+    .icon {
+        color: $green;
+        font-size: $largest-font-size;
+        padding: $medium-size;
+    }
+    @media #{$small-only} {
+        .button {
+            border-radius: 0;
+            bottom: 0;
+            margin: 0;
+            top: 0;
+        }
+    }
+}
+.schools-info{
+    border:1px solid $light-grey;
+    padding:rem-calc(10);
+    p{
+        margin-bottom:0;
+    }
+}
+
+div.h2 {
+    margin-top: 0;
+}
+
+.floating-cta{
+    padding: 0px !important;
+}
+.floating-section{
+    margin-bottom:0px;
+}
+
+.no-left-padding {
+    padding-left: 0;
+}
+
+.mortgage-calculator {
+    .columns, label {
+        cursor: default;
+    }
+    + div.collapse {
+        cursor: auto;
+    }
+}
+.mortgage-disc{
+    margin: 0 rem-calc(10);
+    font-size:10px;
+    color: #999999;
+}
+
+ul.your-payment {
+    li:last-child {
+        border-style: dotted;
+        border-color: $light-grey;
+        border-width: 1px 0 0;
+        font-weight: 600;
+    }
+}
+
+.double-line-icon {
+    margin-bottom: rem-calc(6);
+}
+
+.button.postfix.down-payment-sign {
+    background: $white;
+    color: $black;
+    border: 1px solid $light-grey;
+    cursor:default;
+
+    &.active {
+        background: $green;
+        border: none;
+        cursor:default;
+    }
+}
+table {
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+        color: #444;
+    }
+}
+
+.property-title {
+    .button.small {
+        min-width: rem-calc(180);
+        padding: rem-calc(10) rem-calc(15) rem-calc(8);
+        font-family: $light-font-family;
+        font-size: rem-calc(16);
+        text-transform: uppercase;
+        overflow:hidden !important;
+        span{
+            overflow:hidden !important;
+            display:inline;
+
+        }
+        span:first-child{
+            font-family: $regular-font-family;
+        }
+    }
+/*    table{
+        @media#{$small-only}{
+            float:left !important;
+            margin-top:rem-calc(10);
+            .h2{
+                font-size: rem-calc(16);
+            }
+        }
+    }*/
+    h1 {
+        text-align: center;
+        @media #{$large-up} {
+            text-align: start;
+        }
+    }
+    .builder-info {
+        margin-bottom: 0;
+        @media #{$small-up} {
+            margin-bottom: $small-size;
+        }
+        .h3 {
+            margin: 0;
+            margin-top: $medium-size;
+            margin-bottom: $medium-size;
+            font-size: rem-calc(24);
+        }
+        div:last-child {
+            font-size: rem-calc(18);
+        }
+    }
+    .buttons {
+        margin-top: rem-calc(5);
+    }
+    .property-price {
+        padding-top: $medium-size;
+    }
+    .h2 {
+        @media #{$small-only} {
+            font-size: rem-calc(15);
+        }
+    }
+    .h3{
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+}
+
+@media #{$small-only} {
+    .property-title {
+        .buttons {
+            text-align: center;
+        }
+    }
+}
+
+.attributes-title {
+    font-family: $light-font-family;
+}
+
+.property-attributes {
+    li {
+        color: #444;
+        letter-spacing: rem-calc(0.25);
+        line-height: rem-calc(22);
+
+        i {
+            padding-right: rem-calc(3);
+        }
+
+        span:last-child {
+            font-family: $bold-font-family;
+        }
+    }
+}
+
+.street-view-container {
+    margin-bottom: $small-size;
+}
+
+.bold-green {
+    color: $green;
+    font-family: $bold-font-family;
+
+    &.property-ask {
+        font-size: rem-calc(22);
+    }
+}
+
+.bold-red {
+    color: $dark-red;
+    font-family: $bold-font-family;
+}
+
+a.bold-green:hover {
+    color: $button-bg-hover;
+}
+
+.room-levels > p {
+    margin: 0;
+    margin-top: $medium-size;
+}
+
+.landmarks-stops,
+.landmarks-stores{
+    li span {
+        text-transform: capitalize;
+    }
+    span:nth-of-type(n+2){
+        float:right;
+    }
+}
+
+.align-center .walkscore-class {
+    display: inline-flex;
+    margin-bottom: 20px;
+}
+
+.project-price {
+    padding-top: $large-size;
+    margin-top:rem-calc(20);
+    text-align:center;
+    .h1 {
+        margin-top: 0;
+        padding-left: 0;
+        @media #{$medium-up}{
+            margin-top:rem-calc(24);
+        }
+    }
+    .h2{
+        margin-top:0;
+        @media #{$medium-up}{
+            margin-top:rem-calc(44);
+        }
+    }
+    .button {
+        padding-top: rem-calc(15);
+        padding-bottom: rem-calc(16);
+        font-family: $light-font-family;
+        font-size: rem-calc(18);
+        text-transform: uppercase;
+
+        .bold {
+            font-family: $regular-font-family;
+        }
+
+        @media #{$small-only} {
+            font-size: rem-calc(16);
+        }
+    }
+}
+
+#project-profile {
+  &.is-vip {
+    .project-price {
+      > div.columns + div.columns {
+        display: none;
+         + div.columns {
+           display: block;
+         }
+      }
+      div.h2 {
+        margin-top: 12px;
+      }
+      div.h1 {
+        margin-top: -8px;
+      }
+    }
+  }
+  .feature-list {
+      li {
+          line-height: $large-size;
+          margin-bottom: $small-size;
+      }
+  }
+}
+
+/*
+TD|SA: migrate from hybrid specific to hybrid-details cross
+list specific styles above (not specific to hybrid) should be migrated as well
+ */
+
+.list-container {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.list-items-end {
+    display: none;
+}
+
+.list-items-unavailable {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    color: $grey;
+}
+
+.list-items-spinner {
+    z-index: 0;
+    &.next {
+        top: auto;
+        height: 32px;
+        bottom: 10px;
+    }
+}
+
+.sqft-cta{
+    margin:rem-calc(-10) 0 0;
+}
+
+#description,
+.exclusive-propositions {
+    @media screen and (min-width:641px) and (max-width:810px){
+        margin-top:rem-calc(50) !important;
+    }
+    @media #{$medium-up} {
+        .super-top-margin {
+            margin-top: rem-calc(100) !important;
+        }
+    }
+}
+
+.room-dimensions-button {
+    width: rem-calc(45);
+    color: $grey;
+    background-color: #fff;
+    border: 1px $grey solid;
+
+    &.metric {
+        border-radius: 0 rem-calc(3px) rem-calc(3px) 0;
+        right: rem-calc(3);
+    }
+    &.imperial {
+        border-radius: rem-calc(3px) 0 0 rem-calc(3px);
+    }
+    &:hover {
+        color: #fff;
+        background-color: $light-grey;
+    }
+    &.active-units {
+        color: #fff;
+        background-color: $grey;
+    }
+}
+
+.home-details-image {
+    .img-container {
+        position: relative;
+        padding-bottom: 56.12%;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+    }
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.vip-cta,
+.exclusive-cta {
+    margin-top: $medium-size !important;
+    margin-bottom: $medium-size !important;
+    .vip-perks {
+        font-size: rem-calc(18);
+        margin: $medium-size 0;
+        li {
+            line-height: rem-calc(25);
+            margin-bottom: rem-calc(10);
+        }
+        .icon {
+            float: right;
+            position: absolute;
+            right: rem-calc(8);
+            top: rem-calc(-5);
+            font-size: rem-calc(32);
+        }
+        strike {
+            color: $grey;
+        }
+    }
+    .exclusive-perks {
+        margin: $medium-size 0;
+        .exclusive-perks-title {
+            margin-top: 0;
+        }
+        .exclusive-perks-title {
+            font-size: rem-calc(18);
+        }
+        strike {
+            color: $grey;
+        }
+    }
+    .attached-cta-question {
+        margin-top: rem-calc(10);
+    }
+}
+.attached-cta {
+    margin-top: $medium-size;
+    position: relative;
+    border-top: 2px solid #dddddd;
+    bottom: rem-calc(-10);
+    .button {
+        margin: 0 !important;
+    }
+}
+.attached-cta-question {
+    margin-bottom: 0;
+    margin-top: rem-calc(10) !important;
+    @media #{$large-up} {
+        margin-top: rem-calc(0) !important;
+        position: relative;
+        top: 50%;
+        -ms-transform: translateY(50%);
+        -webkit-transform: translateY(50%);
+        -moz-transform: translateY(50%);
+        -o-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+}

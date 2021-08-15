@@ -1,0 +1,56 @@
+#summary {
+	padding: $large-size;
+	background: $white;
+	color: $dark-grey;
+
+	ul {
+		margin: 0;
+		margin-bottom: $large-size;
+	}
+
+	.info {
+		padding-left: $small-size;
+		text-transform: uppercase;
+		font-size: rem-calc(8);
+		margin: rem-calc(12) 0 rem-calc(12);
+		border: solid $light-grey;
+		border-width: 1px 0 0;
+
+		&>span:first-child {
+			padding-right: 30%;
+		}
+	}
+
+	.info-category {
+		width: rem-calc(45);
+		display: inline-block;
+	}
+
+	.info-details {
+		text-transform: lowercase;
+		font-weight: bold;
+		color: $darkest-grey;
+	}
+
+}
+
+.favourite {
+	font-size: rem-calc(8);
+}
+
+#favourite-number {
+	color: $red;
+}
+
+#walk-number {
+	font-size: $large-font-size;
+}
+
+.share {
+	max-width: 25%;
+	margin-top: rem-calc(15)*(-1);
+}
+
+span.stButton {
+	margin: 0;
+}

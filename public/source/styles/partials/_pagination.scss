@@ -1,0 +1,51 @@
+.pagination-wrapper {
+		font-size: rem-calc(18);
+		font-family: $light-font-family;
+
+		ul.pagination {
+			li {
+				margin-top: rem-calc(20);
+				a {
+					border: 1px solid $light-grey;
+					border-radius: 0;
+					color: $light-grey;
+					padding: rem-calc(12) rem-calc(16);
+					margin: rem-calc(1);
+				}
+                &.active,
+				&:hover {
+					a {
+						color: white;
+						background-color: $green;
+					}
+				}
+                &.active,
+				&.inactive {
+					pointer-events: none;
+				}
+				&.page-num {
+					@media #{$small-only} {
+						display: none;
+					}
+				}
+				&.page-arrow {
+					a {
+						@media #{$small-only} {
+							padding: rem-calc(12) rem-calc(22);
+						}
+					}
+					&.inactive {
+						a {
+							border-color: $mid-grey;
+							color: $mid-grey;
+						}
+					}
+				}
+			}
+		}
+		.pagination-summary {
+			margin: rem-calc(30) 0;
+			color: $light-grey;
+			font-size: $large-font-size;
+		}
+	}

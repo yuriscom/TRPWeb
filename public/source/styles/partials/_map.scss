@@ -1,0 +1,215 @@
+.street-view-container img {
+  // fix "grey" street view bug in Firefox & IE
+  border: none !important;
+  max-width: none !important;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#property-profile,
+#exclusive-profile,
+#project-profile {
+  .map-container {
+    top: 0;
+    @media #{$large-up} {
+      top: 0;
+    }
+  }
+}
+
+.map-container {
+  // fix zoom control not showing
+  .gmnoprint img {
+    max-width: none;
+  }
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+
+  // markers
+  .marker {
+    overflow: visible !important;
+    @include transition(transform $shortest-time ease-in-out);
+
+    span {
+      position: absolute;
+      white-space: nowrap;
+      font-family: $body-font-family;
+      font-size: $small-font-size;
+    }
+
+    &.active {
+      @include scale(1.25, 1.25);
+    }
+
+    &.building, &.house {
+      @include transform-origin(20%, 95%);
+
+      span {
+        left: 28px;
+        top: 8px;
+      }
+
+      &.active {
+        span {
+          color: $white;
+        }
+      }
+
+      // remove $ from vip markers, for now
+      &.vip .currency {
+        display: none;
+      }
+    }
+
+    &.private-listing {
+      sup {
+      	display: none;
+      }
+    }
+
+    &.cluster, &.area {
+      @include border-radius($global-rounded);
+      background: $white;
+      border: 2px solid $green;
+
+      span {
+        left: 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      &.active {
+        background: $green;
+        border: 1px solid $white;
+        span {
+          color: $white;
+        }
+      }
+
+      &.favorite {
+        background: $red;
+        border: 1px solid $white;
+        span {
+          color: $white;
+        }
+      }
+    }
+
+    &.cluster {
+      padding: rem-calc(15);
+      span {
+        top: 8px;
+      }
+    }
+
+    &.area {
+      padding: rem-calc(15);
+      span {
+        top: 8px;
+      }
+    }
+
+  }
+}
+
+// map custom controls
+.control {
+  .button {
+    font-size: $large-font-size;
+    margin: $medium-size;
+    .icon {
+      margin-bottom: -2px;
+    }
+  }
+}
+
+.matches-control {
+  top: rem-calc(34) !important;
+}
+
+
+#map-progress-bar {
+  left: $medium-size;
+  width: 40%;
+
+  .map-prog {
+    position: relative;
+    height: rem-calc(44);
+    left: rem-calc(10);
+    padding: $small-size $medium-size;
+    color: #fff;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: rem-calc(2);
+    @include box-shadow($medium-outset-shadow);
+
+    .total-bar {
+      width: 100%;
+      background-color: rgba(0,0,0,0.6);
+      opacity: 1;
+      height: rem-calc(16);
+    }
+
+    .loading {
+      background-color: $green;
+      float: left;
+      height: 100%;
+      color: #fff;
+      padding-left: $large-size;
+    }
+  }
+}
+
+// TODO: cleanup this crap!
+#map-status-bar, #map-status-bar-desktop {
+  height: 35px;
+  max-height: 35px;
+
+  @media #{$large-up} {
+    background: $white;
+    @include box-shadow($small-outset-shadow);
+    .button {
+      color: $dark-grey;
+      margin: 0;
+      background: transparent;
+      border: none;
+      .icon {
+        color: $green;
+      }
+    }
+  }
+}
+#map-status-bar {
+	display: block;
+  @media #{$large-up} {
+  	display: none;
+  }
+}
+#map-status-bar-desktop {
+	display: none;
+	position: absolute;
+	z-index: 1;
+  @media #{$large-up} {
+  	display: block;
+  }
+}
+#map-show-all-control {
+  .map-toggle-button {
+    margin-bottom: -1px !important;
+  }
+}
+
+#map-zoom-control {
+  margin-top: rem-calc(10);
+  a {
+    display: block;
+  }
+}
+
+.gm-style img {
+  max-width: none;
+}

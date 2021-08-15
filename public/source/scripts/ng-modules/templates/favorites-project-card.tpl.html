@@ -1,0 +1,65 @@
+<a class="block list-card" ng-href="{{ listing.url }}"
+  target="{{ target }}"
+  rel="{{ !follow ? 'nofollow' : '' }}" ng-class="{ 'deactivated': listing.removed }">
+  <div ng-if="listing.removed" class="fav-deactivated-notice">
+    <span>
+      Favourite Deleted
+    </span>
+  </div>
+  <div class="item-photos no-slick">
+    <div class="container">
+      <div class="photo">
+        <img ng-src="{{ listing.images[0]['medium'] }}"
+          ng-srcset="{{ listing.images[0]['small'] }} 400w, {{ listing.images[0]['medium'] }} 600w, {{ listing.images[0]['large'] }} 800w"
+          sizes="(max-width: 640px) 85vw, (max-width: 1239px) 46vw, 470px"
+          title="" onerror="this.style.display='none'" onmousedown="if (event.preventDefault) event.preventDefault()">
+      </div>
+      <div class="overlay badges-container">
+        <div class="top-left badge occupancy-badge" ng-if="listing.occupancy">
+          Occupancy {{ listing['occupancy'] }}
+        </div>
+        <div class="bottom-left" id="overlay-summary">
+          <div ng-if="listing.price_min" id="overlay-price" class="badge price-badge">
+            <div>From</div>
+            <span class="price"><sup>$</sup>{{ listing.price_min | number }}</span>
+          </div>
+          <div ng-if="!listing.price_min" id="overlay-price" class="badge price-badge">
+            <div>Contact Us For Pricing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot-note with-fav-links project-foot-note">
+    <div class="foot-note-info">
+      <div class="foot-note-row foot-note-name">
+        <span>{{ listing.name }}</span>
+      </div>
+      <div class="foot-note-row foot-note-details">
+        <span ng-if="listing.num_floors"><strong>{{ listing.num_floors }}</strong> Floors</span>
+        <span ng-if="listing.num_units"><strong>{{ listing.num_units }}</strong> Units</span>
+      </div>
+      <div class="foot-note-row foot-note-address">
+        <span ng-if="listing.addr_street">{{ listing.addr_street }},</span>
+        <span ng-if="listing.Hood.name"> {{ listing.Hood.name }},</span>
+        {{ listing.City.name }}
+      </div>
+    </div>
+    <div class="row collapse foot-note-links">
+      <div class="small-12 medium-6 columns link view-fav">
+        <div class="button">
+          View Favourite
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns link delete-fav">
+        <div class="button" ng-click="deleteFavorite($event, listing)">
+          Delete Favourite
+        </div>
+      </div>
+    </div>
+    <div class="profile-icon-container">
+        <img src="/assets/graphics/building-icon.svg" alt="Building" class="building-icon">
+    </div>
+  </div>
+</a>

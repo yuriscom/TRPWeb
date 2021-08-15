@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /authenticate
+Disallow: /account
+Sitemap: https://www.theredpin.com/sitemap.xml

@@ -1,0 +1,186 @@
+<?php
+$view = $this->getView();
+$isDisabled  = false;
+$showDetails = true;
+$hideDetails = false;
+$isLoggedIn = true;
+?>
+
+<?php
+foreach ($view->results as $listing) {
+    $projectLink = $this->tag->url(array(array("for" => "homedetails","addr_slug"=>$listing['p']['addr_full_slug'], "city_slug"=>$listing['city_slug'], "id"=>$listing['p']['id'])));
+    $imgSRC = (isset($listing['images']) > 0) ? $listing['images'][0] : "";
+?>
+
+<li class="full full-on-small resale property<?= $isDisabled ? ' is-disabled' : '' ?><?= (!$isLoggedIn && $listing['p']['is_public'] == 0) ? ' is-private' : '' ?>"
+    itemtype=”offers” itemscope
+    data-price="<?= $listing['p']['price'] ?>"
+    data-property-id="<?= $listing['p']['id'] ?>"
+    data-property-layer="resale"
+    data-lat="<?= $listing['p']['lat'] ?>"
+    data-lng="<?= $listing['p']['lng'] ?>"
+    data-is-public="<?= $listing['p']['is_public']?>"
+    data-show-listing="<?= ($showDetails) ? 1 : 0 ?>"
+    data-url="<?= ($showDetails) ? $projectLink : '' ?>">
+
+
+    <div class="visually-hidden">
+        <span itemprop="price">$<?=  $listing['p']['price']  ?></span>
+        <span itemprop="category">Real estate resale home</span>
+        <span itemprop="itemOffered"><?= $listing['pt_name'] ?> resale home</span>
+        <span itemprop="address" itemscope>
+            <span itemprop="streetAddress"><?= $listing['p']['addr_full'] ?></span>
+            <span itemprop="addressLocality"><?= $listing['p']['addr_city'] ?></span>
+            <span itemprop="addressRegion">Ontario</span>
+        </span>
+    </div>
+
+    <div class="property-details" itemprop="description">
+
+        <div class="property-image one-fourth">
+
+
+        <?php if ( $imgSRC != '' ) { 
+                if($hideDetails) { ?>
+                    <a><div class="property-img">
+                    <img src="<?= $imgSRC?>" class="blurred"/>
+                    <a class="overlay sign-up"><p><b>Register</b> to view property details</p></a>
+            <?php } else { ?>
+                    <a href="<?= $projectLink ?>" target="_blank" title="Property for sale at <?= $listing['p']['addr_full'] ?>"><div class="property-img">
+                    <img src="<?= $imgSRC?>"/>
+            <?php }
+                } else {
+                    if($hideDetails) { ?>
+                    <a><div class="property-img relative thumbnail">
+                    <span class="image image-default-house-small"></span>
+                    <a class="overlay sign-up"><p><b>Register</b> to view property details</p></a>
+                <?php }  else { ?>
+                    <a href="<?= $projectLink ?>" target="_blank" title="Property for sale at <?= $listing['p']['addr_full'] ?>"><div class="property-img relative thumbnail">
+                        <span class="image image-default-house-small"></span>
+                <?php }
+                }?>
+           
+            </div></a>
+        </div>
+        <div class="three-fourth left-space property-content">
+            <!-- badge -->
+            <div id="badge">
+              <div class="label radius">
+                <span class="icon"></span>
+                <span class="align-middle">Resale</span>
+              </div>
+            </div>
+
+            <!-- Property address -->
+            <div class="left property-title">
+                <?php if($hideDetails) {
+                    echo '<h3 class="sign-up">Register to view</h3>';                    
+                }
+                else{
+                    echo '<a href="'. $projectLink .'" target="_blank" title="Property for sale at '. $listing['p']['addr_full']. '"><h3>'.$listing['p']['addr_full'].'</h3></a>';
+                     
+                } ?>
+            </div>   
+            <!-- Property price -->
+            <div class="right property-price">
+                <?php if($hideDetails) { ?>
+                <span class="right">UNDER</span><br /><span class="right price">$<?= approximatePrice( $listing['p']['price'], 'max' ) ?></span>
+                <?php } else {  ?>
+                <span class="right price single">$<?= number_format($listing['p']['price']) ?></span>
+                <?php } ?>
+            </div>
+
+            <!-- Property type & date listed -->
+            <div class="full type-listed">
+                <!-- Property type -->
+                <div class="left">
+                    <span class="house-type">
+                        <?= '<strong>' . $listing['pt_name'] . '</strong> for sale in ' . $listing['p']['addr_hood'] . ', ' . $listing['p']['addr_city'] ?>
+                    </span>
+                </div>
+                <!-- Date listed -->
+                <div class="right">
+                    <?php
+                        $date = null;
+                        if ($listing['p']['created_on']) {
+                            $dt = new DateTime($listing['p']['created_on']);
+                            $date = $dt->format("F j, Y");
+                            echo "<span class='right listed'>Listed on ".$date."</span>";
+                        }
+                    ?>                    
+                </div>
+            </div>
+
+            <!-- Property summary & other -->
+            <div class="full">
+                <!-- Property summary -->
+                <ul class="summary">                        
+                    <li>
+                        <span class="icon icon-listing-beds-large"></span>
+                        <span>
+                        <?php if(($isLoggedIn == false && $listing['p']['is_public'] == 1) || ($isLoggedIn == false && $listing['p']['is_public'] == 0)){
+                            echo '<h3>' . $logIn . '</h3>';
+                        }else{ ?>
+                            <h3><?= $listing['p']['num_beds'] != 0 ? $listing['p']['num_beds']: '&mdash;' ?></h3>
+                        <?php } ?>
+                            Beds
+                        </span>
+                    </li>
+                    <li>
+                        <span class="icon icon-listing-baths-large"></span>
+                        <span>
+                        <?php if(($isLoggedIn == false && $listing['p']['is_public'] == 1) || ($isLoggedIn == false && $listing['p']['is_public'] == 0)){
+                            echo '<h3>' . $logIn . '</h3>';
+                        }else{ ?>
+                            <h3><?= $listing['p']['num_baths'] != 0 ? $listing['p']['num_baths'] : '&mdash;' ?></h3>
+                        <?php } ?>
+                            Baths
+                        </span>
+                    </li>
+                    <li>
+                        <span class="icon icon-listing-size-large"></span>
+                        <span>
+                        <?php if(($isLoggedIn == false && $listing['p']['is_public'] == 1) || ($isLoggedIn == false && $listing['p']['is_public'] == 0)){
+                            echo '<h3>' . $logIn . '</h3>';
+                        }else{ ?>
+                            <h3><?= $listing['p']['sqft'] != 0 ? $listing['p']['sqft'] : '&mdash;' ?></h3>
+                        <?php } ?>
+                            Size (FT<sup>2</sup>)
+                        </span>
+                    </li>
+<!--
+                </ul>
+
+                <ul class="favorite-map">-->
+                    <li class="map right">
+                        <div>
+                            <span class="map-pin list icon icon-marker-grey-large" data-property-type="<?=$house?>"></span> 
+                            <span class="favorite-map-text map"></span>
+                        </div>
+                    </li>
+                    <li class="favourite right">
+                        <span class="hidden spinner small dark"></span>
+                        <span class="icon icon-favourite-off-large hover-effect"></span>
+                        <span class="favorite-map-text">Add to Favourites</span>
+                    </li>                    
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <?php if ( $isDisabled == true ) { ?>
+        <div class="disabled">
+            <div class="disabled-message">
+                <strong>Sorry</strong><br/>
+                this property<br/>is no&nbsp;longer available
+            </div>
+        </div>
+    <?php } ?>
+
+</li>
+
+<?php
+}
+?>

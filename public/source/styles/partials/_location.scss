@@ -1,0 +1,10 @@
+#location {
+  .map-container,
+  .street-view-container {
+    min-height: $large-height;
+    position: relative;
+  }
+  .seo-description {
+  	margin-top: $large-size;
+  }
+}

@@ -1,0 +1,22 @@
+@import 'partials/list';
+
+.similar-properties-list {
+	display: none;
+}
+
+#lists {
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+
+	.list {
+		position: relative;
+		overflow: hidden;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		-webkit-overflow-scrolling: touch;
+	}
+}

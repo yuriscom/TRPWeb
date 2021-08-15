@@ -1,0 +1,44 @@
+<div class="saved-searches-container">
+  <div class="row collapse">
+    <h1 class="title">My Saved Searches</h1>
+    <div class="account-management-tabs">
+      <span data-active="{{ propertiesActive }}" ng-class="{ 'active-tab': propertiesActive }" class="tab" ng-click="showProperties()">Resale Homes</span>
+      <span ng-class="{ 'active-tab': !propertiesActive }" class="tab" ng-show="false" ng-click="showProjects()">New Homes</span>
+    </div>
+    <div class="small-12 columns notice {{ notice.type }}" ng-class="{ hidden: !notice.message }">
+      <div class="message">{{ notice.message }}</div>
+    </div>
+  </div>
+  <div class="row collapse saved-searches">
+    <saved-search ng-repeat="search in savedSearches.searches | orderBy: 'created_on':true"></saved-search>
+    <div class="small-12 columns no-results-container" ng-show="savedSearches.searches.length === 0">
+      <span>
+        You currently don’t have any saved searches. <br>
+          <a href="#"
+            data-reveal-template="prospect-match-template"
+            data-reveal-id="prospect-match-modal"
+            data-reveal-classes="prospect-match large"
+            data-reveal-analytics='{ "ga_call": "send", "ga_event": "event", "ga_category": "Soft", "ga_action": "SavedSearchManagementPM", "ga_label": "{{ gaLabel }}", "ga_value": "" }'>
+            Create a New Saved Search!
+          </a>
+      </span>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="cta-standalone">
+      <div class="row">
+        <div class="show-for-medium-up medium-7 columns">
+            <div class="attached-cta-question">Get new and updated MLS&reg; listings by email</div>
+        </div>
+          <a href="#"
+            data-reveal-template="prospect-match-template"
+            data-reveal-id="prospect-match-modal"
+            data-reveal-classes="prospect-match large"
+            data-reveal-analytics='{ "ga_call": "send", "ga_event": "event", "ga_category": "Soft", "ga_action": "SavedSearchManagementPM", "ga_label": "{{ gaLabel }}", "ga_value": "" }'
+            class="small-12 medium-5 columns button red right large section-bottom">
+            Send me new listings <i class="icon icon-chevron-circle-right white"></i>
+          </a>
+      </div>
+    </div>
+  </div>
+</div>

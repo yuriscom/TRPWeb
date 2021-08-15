@@ -1,0 +1,22 @@
+<div class="saved-search">
+  <div ng-hide="search.removed">
+    <div class="row search-name">
+      {{ search.name }}
+    </div>
+    <div class="row search-created">
+      {{ search.parsedFilters }}
+    </div>
+    <div class="row search-created">
+      Created {{ search.created_on | date : 'MMMM d, yyyy' }}
+    </div>
+    <span class="search-delete-link show-for-medium-up">
+      <a ng-click="deleteSavedSearch(search)" href="#">Delete</a>
+    </span>
+    <div class="row search-delete-button show-for-small-only">
+      <a class="button small-12 columns" ng-click="deleteSavedSearch(search)" href="#">Delete</a>
+    </div>
+  </div>
+  <div ng-show="search.removed">
+    <span>Successfully removed search.</span>
+  </div>
+</div>

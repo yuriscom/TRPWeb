@@ -1,0 +1,28 @@
+.property-title {
+	position: relative;
+}
+@media #{$medium-up} {
+	.left-horizontal-padding {
+		padding: 0;
+		padding-left: $large-size;
+	}
+}
+
+.overlay-box {
+	padding: 0;
+}
+
+@media #{$medium-up} {
+	.overlay-box {
+		padding: 0 rem-calc(15);
+		position: absolute;
+		// top: (-1) * rem-calc(25);
+		background: white;
+		z-index: 1;
+		@include box-shadow($small-outset-shadow);
+
+		&.project {
+			right: 0;
+		}
+	}
+}

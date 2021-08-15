@@ -1,0 +1,162 @@
+@import 'partials/badges';
+
+/* Variables */
+$profile-icon-width: rem-calc(30);
+$list-item-padding: rem-calc(7.5);
+/* Styles */
+
+.no-map.list-item .map-marker,
+.no-map .list-item .map-marker {
+  display: none !important;
+}
+
+.list-item {
+  float: left;
+  padding: $list-item-padding;
+  position: relative;
+
+	em {
+		font-style: normal;
+		color: $green;
+	}
+
+  .photo {
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-bottom: 66.27%;
+    position: relative;
+    img {
+      left: 0;
+      width: 100%;
+      position: absolute;
+    }
+  }
+
+  .list-card {
+    position: relative;
+    height: 100%;
+    font-family: $light-font-family;
+    font-size: $small-font-size;
+    line-height: 1;
+    @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.1));
+    &:hover .overlay {
+      color: $white;
+    }
+    @media #{$medium-up} {
+      font-size: $medium-font-size;
+    }
+  }
+
+  .overlay {
+    color: $lightest-grey;
+    padding: 0 $medium-size;
+    height: 100%;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    > span {
+      display: block;
+      position: absolute;
+      bottom: rem-calc(28);
+    }
+    &.overlay-warning {
+      height: 101%;
+      background-image: none !important;
+      background: rgba(0, 0, 0, 0.25);
+      -webkit-transition: background 0.5s linear;
+      -moz-transition: background 0.5s linear;
+      -o-transition: background 0.5s linear;
+      transition: background 0.5s linear;
+
+      span.warning {
+        position: relative;
+        top: 50%;
+        display: block;
+        text-shadow: 1px 1px 1px rgba(0,0,0, 0);
+
+        -webkit-transition: text-shadow 0.5s linear;
+        -moz-transition: text-shadow 0.5s linear;
+        -o-transition: text-shadow 0.5s linear;
+        transition: text-shadow 0.5s linear;
+
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+      span.warning{
+        display:inline-block;
+        text-align: center;
+        width: 100%
+      }
+    }
+    &.overlay-warning:hover {
+      background: rgba(0, 0, 0, 0);
+
+      span.warning {
+        text-shadow: 1px 1px 1px rgba(0,0,0, 1); 
+        text-decoration: underline;
+      }
+    }
+    .inline {
+      display: inline;
+    }
+  }
+
+  .foot-note {
+    position: relative;
+    height: rem-calc(78); /* itemFootHeight in grid-list-view.js must be equal to this value (I know, I know) */
+    padding: $medium-size $medium-size 0;
+    padding-right: $profile-icon-width + rem-calc(10);
+    background: $white;
+    color: $dark-grey;
+    width: 100%;
+    @include cut();
+    .foot-note-row {
+      margin-bottom: $small-size;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .foot-note-details {
+      font-family: $bold-font-family;
+      span {
+        margin-right: $medium-size;
+      }
+    }
+    .foot-note-link {
+      color: $green;
+    }
+    &.project-foot-note {
+      .foot-note-row {
+        margin-bottom: rem-calc(2);
+        &.foot-note-name {
+          margin-bottom: $small-size;
+        }
+      }
+      .foot-note-name {
+        font-size: $largest-font-size;
+      }
+    }
+  }
+  .profile-icon-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: $medium-size;
+    img {
+      width: $profile-icon-width;
+      &.building-icon {
+        width: $profile-icon-width - rem-calc(6);
+      }
+    }
+  }
+
+  .h2, .h3 {
+    color: inherit;
+    margin: 0;
+  }
+}

@@ -1,0 +1,45 @@
+#walkscore-map {
+	margin-bottom: $large-size;
+}
+
+@media #{$small-only} {
+	#walkscore-modal {	
+		.close-reveal-modal {
+			right: rem-calc(25);
+		}
+	}	
+}
+
+#ws-walkscore-tile {
+	position:relative;
+	text-align:left;
+}
+#ws-walkscore-tile * {
+	float:none;
+}
+#ws-footer {
+	margin-top: $small-size;
+}
+#ws-footer a, #ws-footer a:link {
+	font:11px/14px Verdana,Arial,Helvetica,sans-serif;
+	margin-right:6px;
+	white-space:nowrap;
+	padding:0;
+	color:#000;
+	font-weight:bold;
+	text-decoration:none;
+}
+#ws-footer a:hover {
+	color:#777;
+	text-decoration:none;
+}
+#ws-footer a:active {
+	color:#b14900;
+}
+#ws-street {
+	height: 25px !important;
+}
+
+#ws-a {
+	padding-top: rem-calc(8) !important;
+}

@@ -1,0 +1,36 @@
+<div class="favorites-container" ng-init="activeType = 'properties'">
+  <div class="row collapse">
+    <h1 class="title">My Favourites</h1>
+    <div class="account-management-tabs">
+      <span ng-class="{ 'active-tab': activeType === 'properties' }" class="tab" ng-click="showProperties()">Resale Homes</span>
+      <span ng-class="{ 'active-tab': activeType === 'projects' }" class="tab" ng-click="showProjects()">New Homes</span>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="small-12 columns notice {{ notice.type }}" ng-class="{ hidden: !notice.message }">
+      <div class="message">{{ notice.message }}</div>
+    </div>
+    <div ng-controller="ListViewController">
+      <div class="row collapse">
+        <div class="list" data-columns="{{ listSettings.doubleColumn }}" ng-class="{ 'double-column': listSettings.doubleColumn, 'single-column': !listSettings.doubleColumn  }">
+          <div class="row" ng-repeat="propertyRow in favorites.propertyRows">
+            <div class="list-item" ng-repeat="listing in propertyRow" ng-show="activeType === 'properties'">
+              <fav-property-card></fav-property-card>
+            </div>
+          </div>
+          <div class="row" ng-repeat="projectRow in favorites.projectRows">
+            <div class="list-item" ng-repeat="listing in projectRow" ng-show="activeType === 'projects'">
+              <fav-project-card></fav-project-card>
+            </div>
+          </div>
+        </div>
+        <div class="small-12 columns no-results-container" ng-show="noResultsMessage.display">
+          <span>
+            You currently don’t have any
+            {{ noResultsMessage.type }} home favourites. Search for <a ng-href="{{ noFavUrls.properties }}">resale homes</a> or <a ng-href="{{ noFavUrls.projects }}">new homes</a> now.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

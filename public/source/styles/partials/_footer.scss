@@ -1,0 +1,81 @@
+@include sticky-footer($footer-height, '#content-wrapper', '#footer-pusher', '#footer');
+
+#footer {
+  background: $darkest-grey;
+  height: auto;
+  color: $light-grey;
+	padding-bottom: rem-calc(100);
+	font-size: rem-calc(14);
+
+	.row:first-child {
+		padding-top: rem-calc(30);
+		text-align: center;		
+	}
+
+	.address {
+		font-size: rem-calc(14);
+	}
+
+	.links-container {
+		padding-left: $large-size;
+	}
+
+	.row:last-child {
+		color: $dark-grey;
+		padding-top: rem-calc(30);
+		padding-left: $large-size;
+	}
+
+	ul {
+		font-size: $large-font-size;
+	}
+
+	hr {
+		border-color: $dark-grey;
+		border-width: 1px 0 0; 
+	}
+	.social {
+		margin-right: $large-size;
+		color: $dark-grey;
+	}
+
+	a {
+	  color: $light-grey;
+	}
+}
+
+.text-highlight {
+	color: $lightest-grey;
+	font-size: rem-calc(16);
+	padding: $large-size 0;
+	letter-spacing: 0.07em;
+}
+
+@media #{$medium-up} {
+
+	#footer {
+		.social-buttons {
+			position: relative;
+			top: rem-calc(340);
+		}
+
+		.row:first-child {
+			hr {
+				position: relative;
+				top: $large-size;
+			}
+		}
+
+		.theredpin-logo-container {
+			float: left;
+		}
+		.address {
+			float: left;
+			padding-left: $large-size;
+		}
+
+		.links-container {
+			padding-left: 0;
+		}
+	}
+}

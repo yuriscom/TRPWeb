@@ -1,0 +1,3 @@
+define('summary', [ 'main' ], function () {
+
+});
